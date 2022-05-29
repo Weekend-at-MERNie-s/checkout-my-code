@@ -1,26 +1,23 @@
 const { Schema, model } = require('mongoose');
-const Comment = require('./Comment');
-const Post = require("./Post");
+const dateFormat = require('../utils/dateFormat');
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
   username: {
     type: String,
     unique: true,
     required: "You must enter a username",
     trim: true,
   },
-
   email: {
     type: String,
     unique: true,
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
-
   userCreated: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
-
   comments: [
     {
       type: Schema.Types.ObjectId,
@@ -28,7 +25,6 @@ const UserSchema = new Schema({
       ref: 'Comment',
     },
   ],
-
   friends: [
     {
       type: Schema.Types.ObjectId,
@@ -46,10 +42,10 @@ const UserSchema = new Schema({
 });
 
 //RETRIEVES NUMBER OF USERS FRIENDS 
-UserSchema.virtual("friendCount").get(function () {
+userSchema.virtual("friendCount").get(function () {
   return this.friends.length;
 });
 
-const User = model("User", UserSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

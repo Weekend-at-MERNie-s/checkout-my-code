@@ -1,12 +1,8 @@
 const { Schema, model } = require('mongoose');
-const User = require("./User");
-const Comment = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
 
-const dateFormat = require('../utils/date-format');
-
-const postSchema = new Schema(
-  {
-    id: {
+const postSchema = new Schema({
+    postId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -16,7 +12,7 @@ const postSchema = new Schema(
       type: DataTypes.STRING,
       allowNull: false
     },
-    content: {
+    postContent: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -31,16 +27,28 @@ const postSchema = new Schema(
         model: 'user',
         key: 'id'
       }
-    }
-  },
-    {
-      toJSON: {
-        // virtuals: true,
-        getters: true,
+    },
+    comments: [{
+        commentText: {
+          type: String,
+          required: true,
+          minlength: 1,
+          maxlength: 280,
+        },
+        username: {
+          type: String,
+          unique: true,
+          required: true,
+          trim: true,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+          get: (timestamp) => dateFormat(timestamp),
+        },
       },
-      id: false,
-    }
-);
-const Post = model("Post", postSchema);
+    ],
+  });
+const Post = model('Post', postSchema);
 
 module.exports = Post;

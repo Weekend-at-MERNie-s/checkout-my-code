@@ -1,45 +1,27 @@
-const { Schema, model, Types } = require("mongoose");
-const User = require("./User");
-const Post = require("./Post");
-const dateFormat = require('../utils/date-format');
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-const commentSchema = new Schema(
-  {
-    commentText: {
-      type: String,
-      required: "You must enter a comment",
-      minLength: 1,
-      maxLength: 280,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: formatTimeStamp => dateFormat(formatTimeStamp)
-    },
-    username: {
-      type: String,
-      required: true
-    }
+const commentSchema = new Schema({
+  commentText: {
+    type: String,
+    required: 'Be cool and leave a comment!',
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
   },
-  {
-    toJSON: {
-      // virtuals: true,
-      getters: true,
-    },
-    id: false,
-  }
-);
+  commentAuthor: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
+});
 
-
-//RETRIEVES LENGTH OF COMMENTS REACTIONS ARRAY FIELD <--might need this to add likes option
-// commentSchema.virtual("likeCount").get(function () {
-//   return this.likes.length;
-// });
-
-//THIS MAY NOT BE NECCESSARY
-// function formatTimeStamp(date) {
-//   return moment(date).format("MMMM Do YY, h:mm a");
-// }
-const Comment = model("Comment", commentSchema);
+const Comment = model('Comment', commentSchema);
 
 module.exports = Comment;
