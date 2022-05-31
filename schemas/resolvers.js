@@ -3,7 +3,7 @@ const { Comment, User, Post } = require('../models');
 
 const resolvers = {
   Query: {
-    comments: async () => {
+    comment: async () => {
       return Comment.find().sort({ createdAt: -1 });
     },
 

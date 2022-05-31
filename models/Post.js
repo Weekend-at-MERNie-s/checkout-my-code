@@ -2,34 +2,32 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema({
-    postId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
     title: {
-      type: DataTypes.STRING,
+      type: String,
       allowNull: false
     },
     postContent: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: String,
+      required: 'Please enter a message about your project friend!',
+      minlength: 1,
+      maxlength: 280
     },
-    postLink: {
-      type: DataTypes.STRING,
-      allowNull: false
+    postRepoLink: {
+      type: String,
+      required: 'Please enter a link to your repo!'
+    },
+    deployedApplication: {
+      type: String,
     },
     createdAt: {
       type: Date,
       default: Date.now,
       get: formatTimeStamp => dateFormat(formatTimeStamp)
     },
-    user_id: {
-      type: DataTypes.INTEGER,
+    username: {
+      type: String,
       references: {
-        model: 'user',
-        key: 'id'
+        required: true
       }
     },
     comments: [{
