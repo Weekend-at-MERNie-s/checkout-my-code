@@ -3,8 +3,6 @@
 align-self: center;
     /* justify-content: space-around; */
     align-items: center;
-
- 
 }
 
 #dog-container img {
@@ -22,7 +20,9 @@ align-self: center;
     color:#774c2a;
 
 }
-
+#working-app{
+padding-bottom: 30px;
+}
 .text {
 margin-right:50px;
     margin: 20px 20px;

@@ -32,3 +32,9 @@ header nav {
 li{
     padding:10px;
 }
+li:hover {
+    background-color: #f4e4c2;
+    border-radius: 15px;
+    text-shadow: none;
+    color:black;
+  }
