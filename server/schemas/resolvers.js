@@ -1,16 +1,15 @@
 //COPIED FROM ACTIVITIES AND UPDATED
-const { Comment, Post } = require('../models');
-
+const { Comment, User, Post } = require('../models');
 
 const resolvers = {
   Query: {
-    comments: async () => {
+    comment: async () => {
       return Comment.find().sort({ createdAt: -1 });
     },
 
-    // comment: async (parent, { commentId }) => {
-    //   return Comment.findOne({ _id:  commentId });
-    // },
+    comment: async (parent, { commentId }) => {
+      return Comment.findOne({ _id:  commentId });
+    },
   },
 
   Mutation: {

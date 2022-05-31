@@ -18,25 +18,25 @@ const userSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  password: {
+  userGithub: {
     type: String,
-    required: true,
-    minlength: 5
+    unique: true,
+    required: 'Enter your Github link'
   },
-  // comments: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     // default: Types.ObjectId(),
-  //     ref: 'Comment',
-  //   },
-  // ],
-  // friends: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     // type: String,
-  //     ref: 'User',
-  //   },
-  // ],
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      // default: Types.ObjectId(),
+      ref: 'Comment',
+    },
+  ],
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      // type: String,
+      ref: 'User',
+    },
+  ],
 },
 {
   toJSON: {
