@@ -1,27 +1,34 @@
 #main-nav {
     background-color: #774c2a;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     position: -webkit-sticky;
     position: sticky;
     color: white;
-    flex-direction: row;
-    padding: 10px 10px;
-    top: 0;
-    align-self: flex-start;
-    width: auto;
-    justify-content: flex-start;
-    align-items: center;
     font-size: 16px;
-   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
 }
+header nav {
+    margin: 7px 0;
+}
+
+
+
 
 #nav-list {
+    padding:15px;
     list-style: none;
     display: flex;
-    justify-content: flex-end;
+   
 
 }
 
+#title {
+   margin-left: 10px;
+}
 li{
     padding:10px;
 }

@@ -7,15 +7,9 @@ function LandingPage() {
         <>
             <section id="dog-container">
                 <div class="text-container">
-
-                    <h1 class="text">Codespect</h1>
-
-
                     <h3 class="text">Have a working app but want to make < br />
                         your code better?
                     </h3>
-
-
                     <h4 class="text">Sign up and connect with other <br />
                         developers that can help!</h4>
                 </div>
