@@ -16,6 +16,10 @@ const postSchema = new Schema({
       type: DataTypes.STRING,
       allowNull: false
     },
+    postLink: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     createdAt: {
       type: Date,
       default: Date.now,

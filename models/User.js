@@ -18,6 +18,11 @@ const userSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+  userGithub: {
+    type: String,
+    unique: true,
+    required: 'Enter your Github link'
+  },
   comments: [
     {
       type: Schema.Types.ObjectId,

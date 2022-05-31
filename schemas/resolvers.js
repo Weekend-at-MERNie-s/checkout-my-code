@@ -1,5 +1,5 @@
 //COPIED FROM ACTIVITIES AND UPDATED
-const { Comment } = require('../models');
+const { Comment, User, Post } = require('../models');
 
 const resolvers = {
   Query: {
@@ -8,7 +8,7 @@ const resolvers = {
     },
 
     comment: async (parent, { commentId }) => {
-      return Comment.findOne({ _id:  commenttId });
+      return Comment.findOne({ _id:  commentId });
     },
   },
 
