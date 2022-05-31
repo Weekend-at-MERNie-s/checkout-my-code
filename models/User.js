@@ -18,20 +18,25 @@ const userSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      // default: Types.ObjectId(),
-      ref: 'Comment',
-    },
-  ],
-  friends: [
-    {
-      type: Schema.Types.ObjectId,
-      // type: String,
-      ref: 'User',
-    },
-  ],
+  password: {
+    type: String,
+    required: true,
+    minlength: 5
+  },
+  // comments: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     // default: Types.ObjectId(),
+  //     ref: 'Comment',
+  //   },
+  // ],
+  // friends: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     // type: String,
+  //     ref: 'User',
+  //   },
+  // ],
 },
 {
   toJSON: {
@@ -41,10 +46,24 @@ const userSchema = new Schema({
   id: false,
 });
 
-//RETRIEVES NUMBER OF USERS FRIENDS 
-userSchema.virtual("friendCount").get(function () {
-  return this.friends.length;
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
 });
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+//RETRIEVES NUMBER OF USERS FRIENDS 
+// userSchema.virtual("friendCount").get(function () {
+//   return this.friends.length;
+// });
 
 const User = model("User", userSchema);
 

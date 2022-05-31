@@ -1,33 +1,28 @@
-//COPIED FROM ACTIVITIES AND NOT UPDATED YET. CHANGE THOUGHT TO COMMENT.
+// COPIED FROM ACTIVITIES AND NOT UPDATED YET. CHANGE THOUGHT TO COMMENT.
 
-// const { gql } = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
-// const typeDefs = gql`
-//   type Thought {
-//     _id: ID
-//     thoughtText: String
-//     thoughtAuthor: String
-//     createdAt: String
-//     comments: [Comment]!
-//   }
+const typeDefs = gql`
+  
+  type Comment {
+    _id: ID
+    commentText: String
+    createdAt: String
+  }
 
-//   type Comment {
-//     _id: ID
-//     commentText: String
-//     createdAt: String
-//   }
+  type Query {
+    comments: [Comment]
+  }
 
-//   type Query {
-//     thoughts: [Thought]!
-//     thought(thoughtId: ID!): Thought
-//   }
+  type Mutation {
 
-//   type Mutation {
-//     addThought(thoughtText: String!, thoughtAuthor: String!): Thought
-//     addComment(thoughtId: ID!, commentText: String!): Thought
-//     removeThought(thoughtId: ID!): Thought
-//     removeComment(thoughtId: ID!, commentId: ID!): Thought
-//   }
-// `;
+    removeComment( commentId: ID!): Comment
+    addComment(commentId: ID!, commentText: String!): Comment
 
-// module.exports = typeDefs;
+
+  }
+`;
+
+module.exports = typeDefs;
+
+
