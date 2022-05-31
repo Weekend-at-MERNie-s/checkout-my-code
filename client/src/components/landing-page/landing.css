@@ -1,0 +1,29 @@
+#dog-container {
+    display: flex;
+align-self: center;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+#dog-container img {
+    margin-left: 50px;
+    margin-left: auto;
+}
+
+.text-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 50px;
+    margin-left: 0px;
+    color:#774c2a;
+
+}
+#working-app{
+padding-bottom: 30px;
+}
+.text {
+margin-right:50px;
+    margin: 20px 20px;
+}
