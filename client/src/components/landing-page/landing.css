@@ -1,0 +1,13 @@
+#dog-container{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: baseline;
+    align-self: baseline;
+    padding-top: 100px;
+}
+
+#dog-container img {
+    align-self: baseline;
+    bottom: 0
+}

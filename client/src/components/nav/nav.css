@@ -1,0 +1,27 @@
+#main-nav {
+    background-color: #774c2a;
+    flex-wrap: wrap;
+    position: -webkit-sticky;
+    position: sticky;
+    color: white;
+    flex-direction: row;
+    padding: 10px 10px;
+    top: 0;
+    align-self: flex-start;
+    width: auto;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 15px;
+   
+}
+
+#nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+li{
+    padding:15px;
+}
