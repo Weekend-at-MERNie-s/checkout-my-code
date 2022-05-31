@@ -1,0 +1,16 @@
+#landing-footer {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding: 100px;
+
+    padding: 100px;
+    bottom: 0;
+
+}
+
+#madeBy {
+    font-weight: lighter;
+    font-size: smaller;
+}

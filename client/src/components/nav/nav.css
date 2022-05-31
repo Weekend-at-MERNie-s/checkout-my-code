@@ -1,0 +1,40 @@
+#main-nav {
+    background-color: #774c2a;
+    flex-wrap: nowrap;
+    position: -webkit-sticky;
+    position: sticky;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+header nav {
+    margin: 7px 0;
+}
+
+
+
+
+#nav-list {
+    padding:15px;
+    list-style: none;
+    display: flex;
+   
+
+}
+
+#title {
+   margin-left: 10px;
+}
+li{
+    padding:10px;
+}
+li:hover {
+    background-color: #f4e4c2;
+    border-radius: 15px;
+    text-shadow: none;
+    color:black;
+  }

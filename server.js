@@ -25,20 +25,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, ''));
 });
 
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/checkout-my-code',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
 
 //LOG MONGO QUERIES BEING EXECUTED
 mongoose.set('debug', true);
-
-app.listen(PORT, () => {
-  console.log(`App running on localhost:${PORT}!`);
-});
 
 
 //Create a new instance of an Apollo server with the GraphQL schema
