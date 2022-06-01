@@ -27,3 +27,54 @@ padding-bottom: 30px;
 margin-right:50px;
     margin: 20px 20px;
 }
+
+@media screen and (max-width: 980px) {
+    #main-nav {
+       position: relative;
+       padding-bottom: 0;
+       justify-content: center;
+     }
+   
+     @media screen and (max-width: 775px) {
+   
+     
+       h3,h4{
+        font-size: 14px;
+        margin-left: 3px;
+       }
+   
+      li a ul {
+        font-size: 14px;
+      }
+      #dog-container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        }
+
+        #dog img{
+            width: 0px;
+            height: 0px;
+        }
+
+     }
+   
+     @media screen and (max-width: 575px) {
+     
+       
+       header nav ul li a {
+         justify-content: flex-start;
+         font-size: 20px;
+         top: 0;
+         left: 0;
+         height: 100%;
+         width: 100%;
+         flex-direction: row;
+         font-weight: bold;
+         padding-top: 0px;
+       }
+   
+   
+     }
+   }
+

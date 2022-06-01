@@ -15,7 +15,7 @@ function LandingPage() {
                     <h4 class="text">Sign up and connect with other <br />
                         developers that can help!</h4>
                 </div>
-                <img style={{ height: "400px" ,width:"500px"}} src={dog} alt="cute dog with glasses" />
+                <img id="dog" style={{ height: "400px" ,width:"500px"}} src={dog} alt="cute dog with glasses" />
             </section>
             <div>
                 < Footer />
