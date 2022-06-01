@@ -6,11 +6,15 @@ const typeDefs = gql`
 
     type User {
         _id: ID
-        title: String
+        username: String
         email: String
         userGithub: String
-
+        friendCount: Int
+        posts: [Post]
+        comments: [Comment]
+        friends: [User]
     }
+
     type Comment {
         _id: ID
         commentText: String
@@ -21,6 +25,13 @@ const typeDefs = gql`
 
     type Post {
         _id: ID
+        title: String
+        postContent: String
+        postRepoLink: String
+        deployedApplication: String
+        createdAt: String
+        username: String
+        comments: [Comment]
     }
 
 
@@ -29,17 +40,13 @@ const typeDefs = gql`
         user: User
       }
 
-      type User {
-          _id: ID
-          username: String
-          email: String
-          userCreated: String
-          userGithub: String
-          comments: [Comment]
-      }
 
       type Query {
           me: User
+          users: [User]
+          posts: [Post]
+          post(_id: ID!): Post
+          user(username: String!): User
           comments: [Comment]
           comment(_id: ID!): Comment
       }
