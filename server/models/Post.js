@@ -3,30 +3,32 @@ const dateFormat = require('../utils/dateFormat');
 const Comment = require('./Comment');
 
 const postSchema = new Schema({
-    postId: {
-      type: Number,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
     title: {
       type: String,
       allowNull: false
     },
     postContent: {
       type: String,
-      allowNull: false
+      required: 'Please enter a message about your project friend!',
+      minlength: 1,
+      maxlength: 280
+    },
+    postRepoLink: {
+      type: String,
+      required: 'Please enter a link to your repo!'
+    },
+    deployedApplication: {
+      type: String,
     },
     createdAt: {
       type: Date,
       default: Date.now,
       get: formatTimeStamp => dateFormat(formatTimeStamp)
     },
-    user_id: {
-      type: Number,
+    username: {
+      type: String,
       references: {
-        model: 'user',
-        key: 'id'
+        required: true
       }
     },
     // comments: [{
