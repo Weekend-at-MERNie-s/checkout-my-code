@@ -1,16 +1,17 @@
+.edit-post {
+    color: #774c2a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 h1 {
   font-size: 40px;
   font-weight: bold;
-
-}
-.new-post, .old-posts {
-  color: #774c2a;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.post-form {
+
+.edit-post-form {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -18,17 +19,16 @@ h1 {
   font-weight: bold;
 }
 
+
 input,
 textarea {
   border-radius: 5px;
   outline: none;
 }
 
-.create-btn {
+.edit-btns {
   margin: 10px;
   color: #774c2a;
   font-weight: bold;
   border-radius: 5px;
 }
-
-
