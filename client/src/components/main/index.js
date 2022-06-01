@@ -5,7 +5,7 @@ function Main() {
     return (
 <section>
     <div>
-        main page with all user posts and commentary
+        <h2>Main page with list of user posts and number of comments, click post title to see the single post page with comments and the ability to make comments.</h2>
     </div>
 </section>
     )
