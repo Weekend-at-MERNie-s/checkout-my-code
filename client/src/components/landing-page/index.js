@@ -1,6 +1,7 @@
 import dog from '../../assets/images/dog-cartoon.png'
 import css from './landing.css'
 import Footer from '../footer';
+import Header from '../header';
 import Main from '../main';
 import UserPage from '../user-page';
 import SinglePost from '../single-post';
@@ -9,6 +10,7 @@ import SinglePost from '../single-post';
 function LandingPage() {
     return (
         <>
+        
             <section id="dog-container">
                 <div class="text-container">
                     <h3 id="working-app" class="text">Have a working app but want to make < br />
