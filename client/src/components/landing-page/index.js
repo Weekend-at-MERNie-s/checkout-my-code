@@ -6,7 +6,7 @@ import Header from '../header';
 function LandingPage() {
     return (
         <>
-          < Header />
+        
             <section id="dog-container">
                 <div class="text-container">
                     <h3 id="working-app" class="text">Have a working app but want to make < br />

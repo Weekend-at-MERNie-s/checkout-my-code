@@ -31,8 +31,24 @@ header nav {
 }
 li{
     padding:10px;
+    text-decoration: none;
+    color:white;
 }
-li:hover {
+
+.navBtn {
+color:white;
+}
+
+
+  a{
+      color:white;
+      text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+    color:white;
+  }
+  li:hover {
     background-color: #f4e4c2;
     border-radius: 15px;
     text-shadow: none;

@@ -7,15 +7,23 @@ function Nav() {
     return (
         <>
             <nav id="main-nav">
-                <h1 id="title">Codespect</h1>
-                <ul id="nav-list">
 
-                    <li>See Posts</li>
-                    <li>Sign up</li>
-                    {/* <Link to="/login">Login</Link> */}
+                <h1 id="title">
+                    <NavLink className="navBtnLink" to="/">Codespect</NavLink>
+                </h1>
+
+                <ul id="nav-list">
 
                     <li className="navBtn">
                         <NavLink className="navBtnLink" to="/login">Login</NavLink>
+                    </li>
+
+                    <li className="navBtn">
+                        <NavLink className="navBtnLink" to="/login">See Posts</NavLink>
+                    </li>
+
+                    <li className="navBtn">
+                        <NavLink className="navBtnLink" to="/login">Sign Up</NavLink>
                     </li>
                 </ul>
             </nav>
