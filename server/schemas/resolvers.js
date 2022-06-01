@@ -15,14 +15,6 @@ const resolvers = {
 
         return userData;
       }
-
-const resolvers = {
-  Query: {
-    comments: async () => {
-      return Comment.find().sort({ createdAt: -1 });
-    },
-
-
       throw new AuthenticationError('Not logged in');
     },
   },
@@ -107,7 +99,7 @@ const resolvers = {
   //     );
   //   },
   // },
-
+  }
 };
 
 module.exports = resolvers;
