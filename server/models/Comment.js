@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 const commentSchema = new Schema({
   commentText: {
     type: String,
-    required: 'Be cool and leave a comment!',
+    required: 'Help a friend out leave a comment!',
     minlength: 1,
     maxlength: 280,
     trim: true,

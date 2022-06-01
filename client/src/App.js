@@ -11,6 +11,9 @@ import {
 } from "react-router-dom";
 import Login from './components/login';
 
+// import Main from './components/main';
+// import UserPage from './components/user-page';
+// import SinglePost from './components/single-post';
 
 function App() {
   return (
