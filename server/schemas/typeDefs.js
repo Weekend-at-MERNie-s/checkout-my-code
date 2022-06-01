@@ -18,6 +18,10 @@ const typeDefs = gql`
         comments: [Comment]!
     }
 
+    type Post {
+        _id: ID
+    }
+
 
     type Auth {
         token: ID
@@ -34,6 +38,7 @@ const typeDefs = gql`
       }
 
       type Query {
+          me: User
           comments: [Comment]
           comment(_id: ID!): Comment
       }
