@@ -2,9 +2,6 @@ import dog from '../../assets/images/dog-cartoon.png'
 import css from './landing.css'
 import Footer from '../footer';
 import Header from '../header';
-import Main from '../main';
-import UserPage from '../user-page';
-import SinglePost from '../single-post';
 
 
 function LandingPage() {
