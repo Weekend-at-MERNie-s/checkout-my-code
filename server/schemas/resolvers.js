@@ -1,8 +1,7 @@
 //COPIED FROM ACTIVITIES AND UPDATED
 const { User, Comment, Post } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
-
+const auth = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -17,9 +16,60 @@ const resolvers = {
         return userData;
       }
 
+const resolvers = {
+  Query: {
+    comments: async () => {
+      return Comment.find().sort({ createdAt: -1 });
+    },
+
+
       throw new AuthenticationError('Not logged in');
     },
   },
+
+  Mutation: {
+    // login resolver
+
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = auth.signToken(user);
+
+      return { token, user };
+  },
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+          throw new AuthenticationError("Incorrect credentials");
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+      }
+      // all conditional are pass create token
+      const token = auth.signToken(user);
+
+      return { token, user };
+  },
+      //USE EITHER LINES 17-19 OR 20-31, I THINK ITS 20-31
+    // addComment: async (parent, { commentText, commentAuthor }) => {
+    //   return Comment.create({ commentText, commentAuthor });
+    // },
+    addComment: async (parent, { postId, commentText }) => {
+      return Post.findOneAndUpdate(
+        { _id: postId },
+        {
+          $addToSet: { comments: { commentText } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
 
 
   //   comment: async (parent, { commentId }) => {
