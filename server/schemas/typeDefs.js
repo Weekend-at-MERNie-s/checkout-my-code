@@ -4,29 +4,16 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
-    type Post {
+    type User {
         _id: ID
-        title: String
-        createdAt: String
-        postContent: String 
-    }
-    type Comments {
-        _id: ID
-        commentText: String
-        commentAuthor: String
-        createdAt: String
-        comments: [Comment]!
+        username: String
+        email: String
+        userGithub: String 
+        friendCount: Int
     }
 
-    type Comment {
-        _id: ID
-        commentText: String
-        createdAt: String
-    }
-
-    type Mutation {
-        addComment(commentText: String!): Post
-        removeComment( commentId: ID!): Post
+    type Query {
+        me: User
     }
 `;
 

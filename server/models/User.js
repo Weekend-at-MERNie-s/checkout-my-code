@@ -13,6 +13,11 @@ const userSchema = new Schema({
     unique: true,
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
+  password: {
+    type: String,
+    required: true, 
+    minlength: 5
+  },
   userCreated: {
     type: Date,
     default: Date.now,
@@ -23,17 +28,21 @@ const userSchema = new Schema({
     unique: true,
     required: 'Enter your Github link'
   },
+  posts: [
+    {
+    type: Schema.Types.ObjectId,
+    ref: 'Post'
+    }
+  ],
   comments: [
     {
       type: Schema.Types.ObjectId,
-      // default: Types.ObjectId(),
       ref: 'Comment',
     },
   ],
   friends: [
     {
       type: Schema.Types.ObjectId,
-      // type: String,
       ref: 'User',
     },
   ],
@@ -41,7 +50,7 @@ const userSchema = new Schema({
 {
   toJSON: {
     virtuals: true,
-    // getters: true,
+    getters: true,
   },
   id: false,
 });
@@ -61,9 +70,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 //RETRIEVES NUMBER OF USERS FRIENDS 
-// userSchema.virtual("friendCount").get(function () {
-//   return this.friends.length;
-// });
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
 
 const User = model("User", userSchema);
 
