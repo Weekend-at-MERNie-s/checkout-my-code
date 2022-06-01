@@ -16,7 +16,7 @@ function UserPage() {
                 <label for="content">Content</label>
                 <textarea id="content" name="content"></textarea>
             {/* </div> */}
-                <button type="submit" class='create-btn'>Create</button>
+                <button type="submit" class='create-btn'>Justify my Code</button>
         </form>
     </div>
     <div className='old-posts'>
