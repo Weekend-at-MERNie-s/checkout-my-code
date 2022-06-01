@@ -15,23 +15,44 @@ body{
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@@media screen and (max-width: 980px) {
+  header {
+    position: relative;
+    padding-bottom: 0;
+    justify-content: center;
   }
-}
 
 
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  header h1 {
+    width: 100%;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+
+
+
+  @media screen and (max-width: 775px) {
+    
+
+   
+
+  }
+
+  @media screen and (max-width: 575px) {
+  
+    
+    header nav ul li a {
+      justify-content: flex-start;
+      font-size: 20px;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      flex-direction: row;
+      font-weight: bold;
+      padding-top: 0px;
+    }
+
+
   }
 }

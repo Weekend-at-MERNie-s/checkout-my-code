@@ -10,13 +10,11 @@
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    width: 100%;
 }
 header nav {
     margin: 7px 0;
 }
-
-
-
 
 #nav-list {
     padding:15px;
