@@ -1,10 +1,12 @@
 import dog from '../../assets/images/dog-cartoon.png'
 import css from './landing.css'
 import Footer from '../footer';
+import Header from '../header';
 
 function LandingPage() {
     return (
         <>
+          < Header />
             <section id="dog-container">
                 <div class="text-container">
                     <h3 id="working-app" class="text">Have a working app but want to make < br />
