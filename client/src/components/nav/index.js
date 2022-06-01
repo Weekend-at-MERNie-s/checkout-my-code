@@ -18,16 +18,16 @@ function Nav() {
                         <NavLink className="navBtnLink" to="/landing-page">/Root</NavLink>
                     </li>
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">Login</NavLink>
+                        <NavLink className="navBtnLink" to="/login">CD/Profile</NavLink>
                     </li>
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">Sign Up</NavLink>
+                        <NavLink className="navBtnLink" to="/login">Join</NavLink>
                     </li>
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/main">Checkout some Code</NavLink>
+                        <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
                     </li>
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/user-page">User Dashboard</NavLink>
+                        <NavLink className="navBtnLink" to="/user-page">User Motherboard</NavLink>
                     </li>
 
                    
