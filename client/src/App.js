@@ -10,10 +10,9 @@ import {
   Route
 } from "react-router-dom";
 import Login from './components/login';
+import Main from './components/main';
+import UserPage from './components/user-page';
 
-// import Main from './components/main';
-// import UserPage from './components/user-page';
-// import SinglePost from './components/single-post';
 
 function App() {
   return (
@@ -22,9 +21,11 @@ function App() {
         {/* < LandingPage /> */}
         < Header />
         <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/landing-page" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
-          
+          <Route path="/main" element={<Main />} />
+          <Route path="/user-page" element={<UserPage />} />
+         
         </Routes>
       </Router>
     </>

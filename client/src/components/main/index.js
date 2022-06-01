@@ -5,7 +5,7 @@ function Main() {
     return (
 <section>
     <div>
-        
+        main page with all user posts and commentary
     </div>
 </section>
     )
