@@ -4,7 +4,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
-    type Post {
+    type User {
         _id: ID
         title: String
         createdAt: String
