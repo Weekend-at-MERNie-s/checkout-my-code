@@ -23,6 +23,11 @@ const userSchema = new Schema({
     unique: true,
     required: 'Enter your Github link'
   },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5
+  },
   comments: [
     {
       type: Schema.Types.ObjectId,
