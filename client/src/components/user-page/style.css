@@ -3,7 +3,14 @@ h1 {
   font-weight: bold;
 
 }
-.new-post, .old-posts {
+.user-post-page{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.new-post {
   color: #774c2a;
   display: flex;
   flex-direction: column;
@@ -24,11 +31,12 @@ textarea {
   outline: none;
 }
 
-.create-btn {
+.btn {
   margin: 10px;
   color: #774c2a;
   font-weight: bold;
   border-radius: 5px;
+  border-color:#774c2a;
 }
 
 

@@ -1,21 +1,19 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import css from "./style.css";
 
 function EditPost() {
+   
   return (
     <section>
       <div className="edit-post">
         <h1>Edit Post</h1>
-        <form id="edit-post-form" className="edit-post">
-          <input type="hidden" name="post-id" />
-          <label for="post-title">Title:</label>
-          <input name="post-title" type="text" />
-          <label for="post-content">Content:</label>
-          <textarea name="post-content"></textarea>
-          <div className="edit-btns">
-            <button type="submit">Save post</button>
-            <button type="button">Delete post</button>
-          </div>
+        <form className="edit-form">
+          <label htmlFor="post-title">Title:</label>
+          <input type="text" id="post-title" name="post-title" />
+          <label htmlFor="content">Content:</label>
+          <textarea id="content" name="content"></textarea>
+          <button type="submit" className='btn'>Commit</button>
+          <button type="submit" className='btn'>Delete</button>
         </form>
       </div>
     </section>
