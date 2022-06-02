@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import css from "./style.css";
 
+
 function EditPost() {
+   
   return (
     <section>
       <div className="edit-post">

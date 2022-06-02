@@ -26,7 +26,7 @@ function UserPage() {
 
   return (
 
-    <section>
+    <section className='user-post-page'>
       <div className="new-post">
         <h1>Create New Post</h1>
         <form className="post-form" onSubmit={handleSubmit}>
@@ -39,11 +39,9 @@ function UserPage() {
           </button>
         </form>
       </div>
-        {/* <h1>View your previous posts</h1>  */}
         <EditPost />
-
+        {/* <h1>View your previous posts</h1>  */}
         {/* display list post- need to use .map method (postList) */}
-
     </section>
   );
 }
