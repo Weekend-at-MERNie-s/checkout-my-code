@@ -48,4 +48,17 @@
       padding-bottom: 10px;
   }
 
+  input[type='checkbox'] {
+    accent-color: #774c2a;
+}
+
+#btn-submit {
+    float: right;
+  
+}
+
+#btn-submit:hover {
+    background-color: #774c2a;
+    color:white;
+  }
  
