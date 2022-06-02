@@ -15,16 +15,19 @@ function Nav() {
                 <ul id="nav-list">
 
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">Login</NavLink>
+                        <NavLink className="navBtnLink" to="/login">Log In</NavLink>
+                    </li>
+                    <li className="navBtn">
+                        <NavLink className="navBtnLink" to="/login">Join</NavLink>
+                    </li>
+                    <li className="navBtn">
+                        <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
+                    </li>
+                    <li className="navBtn">
+                        <NavLink className="navBtnLink" to="/user-page">User Motherboard</NavLink>
                     </li>
 
-                    <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">See Posts</NavLink>
-                    </li>
-
-                    <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">Sign Up</NavLink>
-                    </li>
+                   
                 </ul>
             </nav>
         </>
