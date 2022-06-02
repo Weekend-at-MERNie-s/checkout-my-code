@@ -15,10 +15,7 @@ function Nav() {
                 <ul id="nav-list">
 
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/landing-page">/Root</NavLink>
-                    </li>
-                    <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">CD/Profile</NavLink>
+                        <NavLink className="navBtnLink" to="/login">Log In</NavLink>
                     </li>
                     <li className="navBtn">
                         <NavLink className="navBtnLink" to="/login">Join</NavLink>

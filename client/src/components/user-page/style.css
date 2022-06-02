@@ -1,8 +1,9 @@
 h1 {
   font-size: 40px;
   font-weight: bold;
+
 }
-.new-post {
+.new-post, .old-posts {
   color: #774c2a;
   display: flex;
   flex-direction: column;
@@ -23,9 +24,12 @@ textarea {
   outline: none;
 }
 
-.create-btn {
+.btn {
   margin: 10px;
   color: #774c2a;
   font-weight: bold;
   border-radius: 5px;
+  border-color:#774c2a;
 }
+
+
