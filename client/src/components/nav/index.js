@@ -18,16 +18,12 @@ function Nav() {
                         <NavLink className="navBtnLink" to="/login">Log In</NavLink>
                     </li>
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">Join</NavLink>
+                        <NavLink className="navBtnLink" to="/join">Join</NavLink>
                     </li>
                     <li className="navBtn">
                         <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
                     </li>
-                    <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/user-page">User Motherboard</NavLink>
-                    </li>
-
-                   
+                
                 </ul>
             </nav>
         </>
