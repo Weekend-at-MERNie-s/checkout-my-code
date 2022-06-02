@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import css from "./style.css";
 
-
+// edit post function
 function EditPost() {
    
   return (
