@@ -6,9 +6,13 @@ const typeDefs = gql`
 
     type User {
         _id: ID
-        title: String
+        username: String
         email: String
         userGithub: String
+        friendCount: Int 
+        post: [Post]
+        comments: [Comment]
+        friends: [User]
 
     }
     type Comment {
@@ -16,11 +20,17 @@ const typeDefs = gql`
         commentText: String
         commentAuthor: String
         createdAt: String
-        comments: [Comment]!
     }
 
     type Post {
         _id: ID
+        title: String 
+        postContent: String
+        postRepoLink: String
+        deployedApplication: String
+        createdAt: String
+        username: String 
+        comments: [Comment]
     }
 
 
@@ -29,17 +39,12 @@ const typeDefs = gql`
         user: User
       }
 
-      type User {
-          _id: ID
-          username: String
-          email: String
-          userCreated: String
-          userGithub: String
-          comments: [Comment]
-      }
-
       type Query {
           me: User
+          users: [User]
+          user(username: String!): User
+          Posts(username: String!): [Post]
+          post(_id: ID!): Post
           comments: [Comment]
           comment(_id: ID!): Comment
       }
@@ -48,11 +53,13 @@ const typeDefs = gql`
 
 
     type Mutation {
-        updateUser(firstName: String, lastName: String, email: String, image: String, about: String, favorite: String): User
-        addUser(firstName: String!, lastName: String!, email: String!,password: String!): Auth
+        updateUser(username: String, userGithub: String, email: String, image: String, about: String): User
+        addUser(username: String!, userGithub: String!, email: String!,password: String!): Auth
         login(email: String!, password: String!): Auth
         addComment(commentText: String!): Post
         removeComment( commentId: ID!): Post
+        addFriend(friendId: ID!): User
+        addPost(title: String!, postContent: String!, postRepoLink: String!, deployedApplication: String): Post
     }
 `;
 
