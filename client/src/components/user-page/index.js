@@ -1,16 +1,23 @@
 import React, {useState, useEffect} from "react";
 import css from "./style.css";
-import EditPost from "../edit-post";
+import SinglePost from "../single-post";
+import dog from '../../assets/images/dog-cartoon.png'
+
 
 function UserPage() {
 
     const [title, setTitle] = useState('');
-    const [content, setContent]= useState('');
+    const [github, setGithub]= useState('');
+    const [deploy, setDeploy]= useState('');
+    const [justify, setJustify]= useState('');
+
     const [postList, setPostList]= useState([]);
     const handleSubmit = (event)=> {
         event.preventDefault();
         console.log('title', title)
-        console.log('content', content)
+        console.log('github', github)
+        console.log('deploy', deploy)
+        console.log('justify', justify)
 
         //await fetch.post (title, content)
 
@@ -25,23 +32,41 @@ function UserPage() {
     //   }, []);
 
   return (
-
     <section className='user-post-page'>
-      <div className="new-post">
-        <h1>Create New Post</h1>
         <form className="post-form" onSubmit={handleSubmit}>
-          <label htmlFor="post-title">Title:</label>
-          <input type="text" id="post-title" name="post-title" onChange={e=> setTitle(e.target.value)}/>
-          <label htmlFor="content">Content:</label>
-          <textarea id="content" name="content" onChange={e=> setContent(e.target.value)}></textarea>
-          <button type="submit" className='btn'>
-            Justify my Code
-          </button>
+          <h1>Create New Post</h1>
+          {/* <div className='input'> */}
+            <div>
+             <label htmlFor="post-title">Title:</label>
+              <input className="form-input" type="text" id="post-title" name="post-title" onChange={e=> setTitle(e.target.value)}/>
+            </div>
+            <div>
+              <label htmlFor="github">GitHub Repo Link:</label>
+              <input className="form-input" id="content" name="content" onChange={e=> setGithub(e.target.value)}/>
+            </div>
+            <div>
+              <label htmlFor="deploy">Deployed App Link:</label>
+              <input className="form-input" id="content" name="content" onChange={e=> setDeploy(e.target.value)}/>
+            </div>
+            <div>
+              <label htmlFor="content">Justify my post:</label>
+              <textarea className="form-input" id="justify" name="content" onChange={e=> setJustify(e.target.value)}></textarea>
+             </div>
+             <div className='merge'>
+             <img id="dog" style={{ height: "85px", width: "85px" }} src={dog} alt="cute dog with glasses" />
+
+                <button type="submit" className='btn'>
+                Merge my code
+                </button>
+            </div>
         </form>
-      </div>
-        <EditPost />
-        {/* <h1>View your previous posts</h1>  */}
+
+      {/* </div> */}
+        <SinglePost />
         {/* display list post- need to use .map method (postList) */}
+        {/* <div>
+        <button className='btn'>EDIT POST</button>
+        </div> */}
     </section>
   );
 }
