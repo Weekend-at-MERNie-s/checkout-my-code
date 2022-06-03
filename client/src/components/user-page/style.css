@@ -1,11 +1,11 @@
 h1 {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bold;
 
 }
 .user-post-page{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin-left: 5vw;
   margin-right: 5vw;
@@ -19,12 +19,21 @@ h1 {
 
 .post-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 10px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
-
+.content{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.justify{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
 input,
 textarea {
   border-radius: 5px;
