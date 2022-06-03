@@ -3,13 +3,19 @@ import css from './join.css'
 import React, { useState } from 'react';
 import { validateEmail } from '../../utils/helpers';
 import dog from '../../assets/images/dog-cartoon.png'
+import Footer from '../footer';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
 
 const Join = () => {
 
-    const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+    const [formState, setFormState] = useState({
+        username: '', email: '',
+        password: '', userGithub: ''
+    });
 
     const [errorMessage, setErrorMessage] = useState('');
-    const { name, email, message } = formState;
+    const { username, email, password,  userGithub} = formState;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -43,11 +49,11 @@ const Join = () => {
                 <form id="form" className="form-style">
                     <div>
                         <label htmlFor="name">Username:</label>
-                        <input className="form-input" type="text" name="username" defaultValue={name} onBlur={handleChange} />
+                        <input className="form-input" type="text" name="username" defaultValue={username} onBlur={handleChange} />
                     </div>
                     <div>
                         <label htmlFor="name">Github Username:</label>
-                        <input className="form-input" type="text" name="name" defaultValue={name} onBlur={handleChange} />
+                        <input className="form-input" type="text" name="userGithub" defaultValue={userGithub} onBlur={handleChange} />
                     </div>
 
                     <div>
@@ -57,7 +63,7 @@ const Join = () => {
 
                     <div>
                         <label htmlFor="email">Password:</label>
-                        <input className="form-input" type="password" name="email" defaultValue={email} onBlur={handleChange} />
+                        <input className="form-input" type="password" name="password" defaultValue={password} onBlur={handleChange} />
                     </div>
 
                     {errorMessage && (
@@ -68,8 +74,8 @@ const Join = () => {
 
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" id="gridCheck" />
-                        <label id="warn"className="form-check-label" for="gridCheck">
-                        I acknowledge that this app is only for working code that can be improved, not for broken apps.
+                        <label id="warn" className="form-check-label" for="gridCheck">
+                            I acknowledge that this app is only for working code that can be improved, not for broken apps.
                         </label>
                     </div>
                     <div className="submit">
@@ -82,8 +88,9 @@ const Join = () => {
             </div>
 
 
-
+            <Footer />
         </>
+
     )
 
 }
