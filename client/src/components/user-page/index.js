@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import css from "./style.css";
 import SinglePost from "../single-post";
+import dog from '../../assets/images/dog-cartoon.png'
+
 
 function UserPage() {
 
@@ -30,36 +32,41 @@ function UserPage() {
     //   }, []);
 
   return (
-
     <section className='user-post-page'>
-
-      <div className="new-post">
-        <h1>Create New Post</h1>
         <form className="post-form" onSubmit={handleSubmit}>
-          <div className='content'>
-            <label htmlFor="post-title">Title:</label>
-            <input type="text" id="post-title" name="post-title" onChange={e=> setTitle(e.target.value)}/>
-            <label htmlFor="github">GitHub Repo Link:</label>
-            <input id="content" name="content" onChange={e=> setGithub(e.target.value)}/>
-            <label htmlFor="deploy">Deployed App Link:</label>
-            <input id="content" name="content" onChange={e=> setDeploy(e.target.value)}/>
-          </div>
-
-          <div className='justify'>
+          <h1>Create New Post</h1>
+          {/* <div className='input'> */}
+            <div>
+             <label htmlFor="post-title">Title:</label>
+              <input className="form-input" type="text" id="post-title" name="post-title" onChange={e=> setTitle(e.target.value)}/>
+            </div>
+            <div>
+              <label htmlFor="github">GitHub Repo Link:</label>
+              <input className="form-input" id="content" name="content" onChange={e=> setGithub(e.target.value)}/>
+            </div>
+            <div>
+              <label htmlFor="deploy">Deployed App Link:</label>
+              <input className="form-input" id="content" name="content" onChange={e=> setDeploy(e.target.value)}/>
+            </div>
+            <div>
               <label htmlFor="content">Justify my post:</label>
-            <textarea id="justify" name="content" onChange={e=> setJustify(e.target.value)}></textarea>
-            <button type="submit" className='btn'>
-              Merge my code
-            </button>
-          </div>
+              <textarea className="form-input" id="justify" name="content" onChange={e=> setJustify(e.target.value)}></textarea>
+             </div>
+             <div className='merge'>
+             <img id="dog" style={{ height: "85px", width: "85px" }} src={dog} alt="cute dog with glasses" />
 
+                <button type="submit" className='btn'>
+                Merge my code
+                </button>
+            </div>
         </form>
-      </div>
+
+      {/* </div> */}
         <SinglePost />
         {/* display list post- need to use .map method (postList) */}
-        <div>
+        {/* <div>
         <button className='btn'>EDIT POST</button>
-        </div>
+        </div> */}
     </section>
   );
 }
