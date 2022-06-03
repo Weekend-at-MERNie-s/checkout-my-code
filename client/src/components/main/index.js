@@ -13,16 +13,7 @@ function Main() {
         </h3>
         <div className="code-display">
            *list of users posted code files here*
-          <form class="comment-form">
-            <div>
-              <textarea name="comment-text"></textarea>
-            </div>
-            <div>
-              <button type="submit" className='submit-btn'>
-                Push Commentary
-              </button>
-            </div>
-          </form>
+          
         </div>
       </div>
     </section>
