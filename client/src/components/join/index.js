@@ -11,14 +11,27 @@ const Join = () => {
 
     const [formState, setFormState] = useState({
         username: '', email: '',
-        password: '', userGithub: ''
+        password: '', userGithub: '',
     });
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const { username, email, password,  userGithub} = formState;
+    const [addUser, { error }] = useMutation(ADD_USER);
+    const [isSubscribed, setIsSubscribed] = useState(false);
 
-    const handleSubmit = (e) => {
+    const [errorMessage, setErrorMessage] = useState('');
+    const { username, email, password, userGithub } = formState;
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        try {
+            const { data } = await addUser({
+                variables: { ...formState }
+            });
+            console.log(data)
+        } catch (e) {
+            console.error(e)
+        }
         if (!errorMessage) {
             setFormState({ [e.target.name]: e.target.value });
             console.log('Form', formState);
@@ -26,6 +39,8 @@ const Join = () => {
     };
 
     const handleChange = (e) => {
+
+
         if (e.target.name === 'email') {
             const isValid = validateEmail(e.target.value);
             if (!isValid) {
@@ -72,12 +87,13 @@ const Join = () => {
                         </div>
                     )}
 
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" id="gridCheck" />
-                        <label id="warn" className="form-check-label" for="gridCheck">
+                    {/* <div className="form-check">
+                        <input className="form-check-input" type="checkbox"
+                            onChange={handleSubmit} id="gridCheck" />
+                        <label id="warn" className="form-check-label" htmlFor="gridCheck">
                             I acknowledge that this app is only for working code that can be improved, not for broken apps.
                         </label>
-                    </div>
+                    </div> */}
                     <div className="submit">
                         <button id="btn-submit" className="btn btn-light" data-testid="button" type="submit">Submit</button>
                     </div>
@@ -86,7 +102,7 @@ const Join = () => {
                 </form>
                 <img id="dog" style={{ height: "200px", width: "200px", left: 0 }} src={dog} alt="cute dog with glasses" />
             </div>
-
+            {error && <div>Sign up failed</div>}
 
             <Footer />
         </>
