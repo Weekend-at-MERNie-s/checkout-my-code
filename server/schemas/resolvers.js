@@ -46,10 +46,6 @@ const resolvers = {
 
       return { token, user };
   },
-      //USE EITHER LINES 17-19 OR 20-31, I THINK ITS 20-31
-    // addComment: async (parent, { commentText, commentAuthor }) => {
-    //   return Comment.create({ commentText, commentAuthor });
-    // },
     addComment: async (parent, { postId, commentText }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
@@ -85,6 +81,7 @@ const resolvers = {
         );
         return post;
       }
+      throw new AuthenticationError('You need to be logged in friend!')
     }
 
 
