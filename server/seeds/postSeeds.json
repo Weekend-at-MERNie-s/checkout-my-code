@@ -1,32 +1,51 @@
 [
   {
     "title": "rate my code",
-    "user_id": 1,
-    "content": "paste code file here"
+    "username": 1,
+    "postContent": "paste code file here",
+    "postRepoLink": "http://github.com",
+    "deployedApplication": "http://heroku.com",
+    "comments": ""
   },
   {
     "title": "advice on css",
-    "user_id": 2,
-    "content": "paste code file here"
+    "username": 2,
+    "postContent": "paste code file here",
+    "postRepoLink": "http://github.com",
+    "deployedApplication": "http://heroku.com",
+    "comments": ""
   },
   {
     "title": "help find syntax error",
-    "user_id": 3,
-    "content": "paste code file here"
+    "username": 3,
+    "postContent": "paste code file here",
+    "postRepoLink": "http://github.com",
+    "deployedApplication": "http://heroku.com",
+    "comments": ""
   },
   {
     "title": "dry my code",
-    "user_id": 4,
-    "content": "paste code file here"
+    "username": 4,
+    "postContent": "paste code file here",
+    "postRepoLink": "http://github.com",
+    "deployedApplication": "http://heroku.com",
+    "comments": ""
   },
   {
     "title": "improve functionality",
-    "user_id": 5,
-    "content": "paste code file here"
+    "username": 5,
+    "postContent": "paste code file here",
+    "postRepoLink": "http://github.com",
+    "deployedApplication": "http://heroku.com",
+    "comments": ""
   },
   {
     "title": "what's broken??!",
-    "user_id": 6,
-    "content": "paste code file here"
+    "username": 6,
+    "postContent": "paste code file here",
+    "postRepoLink": "http://github.com",
+    "deployedApplication": "http://heroku.com",
+    "comments": ""
+  
   }
 ]
