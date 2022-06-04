@@ -17,13 +17,21 @@ function Nav() {
                 <NavLink className="navBtnLink" to="/">Codespect</NavLink>
             </h1>
             <ul id="nav-list">
-            
+
                 {Auth.loggedIn() ? (
                     <>
-                        <NavLink to="/user-page">Me</NavLink>
-                        <a className="navBtnLink" href="/" onClick={logout}>
-                            Logout
-                        </a>
+
+                        <li className="navBtn">
+                            <NavLink className="navBtnLink" to="/user-page">me</NavLink>
+                        </li>
+
+                        <li className="navBtn">
+                            <a className="navBtnLink" href="/" onClick={logout}>
+                                Logout
+                            </a>
+                        </li>
+
+
                     </>
                 ) : (
                     <>
@@ -33,15 +41,15 @@ function Nav() {
                         <li className="navBtn">
                             <NavLink className="navBtnLink" to="/join">Join</NavLink>
                         </li>
-                         <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
-                    </li>
+                        <li className="navBtn">
+                            <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
+                        </li>
                     </>
                 )}
-                </ul>
-            </nav>
+            </ul>
+        </nav>
 
-        
+
 
     );
 
