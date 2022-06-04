@@ -2,7 +2,7 @@
 import css from '../../components/join/join.css'
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN_USER } from '../../utils/mutations'
 
 
 const Login = () => {
@@ -42,7 +42,8 @@ const Login = () => {
     <>
       <main className="">
         <div className="login">
-          <form className="form-style" id="login" onSubmit={handleFormSubmit}>
+          <form className="form-style" id="login"
+           onSubmit={handleFormSubmit}>
            <h5 style={{color: "#774c2a", 
            textAlign: "center",
            paddingBottom:"8px"}}>Welcome Back! </h5>
@@ -67,7 +68,7 @@ const Login = () => {
 
             <div className="submit">
               <button id="btn-submit" className="btn btn-light" data-testid="button" type="submit">
-                Submit
+               Login
               </button>
             </div>
           </form>

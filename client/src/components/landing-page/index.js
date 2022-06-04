@@ -9,11 +9,11 @@ function LandingPage() {
         <>
         
             <section id="dog-container">
-                <div class="text-container">
-                    <h3 id="working-app" class="text">Have a working app but want to make < br />
+                <div className="text-container">
+                    <h3 id="working-app" className="text">Have a working app but want to make < br />
                         your code better?
                     </h3>
-                    <h4 class="text">Sign up and connect with other <br />
+                    <h4 className="text">Sign up and connect with other <br />
                         developers that can help!</h4>
                 </div>
                 <img id="dog" style={{ height: "400px" ,width:"500px"}} src={dog} alt="cute dog with glasses" />
