@@ -1,11 +1,11 @@
 
 import css from './join.css'
 import React, { useState } from 'react';
-import { validateEmail } from '../../utils/helpers';
 import dog from '../../assets/images/dog-cartoon.png'
 import Footer from '../footer';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
+
 
 const Join = () => {
 
@@ -41,60 +41,76 @@ const Join = () => {
         }
     };
     return (
-        <main className="flex-row justify-center mb-4">
-            <div className="col-12 col-md-6">
-                <div className="card">
-                    <h4 className="card-header">Sign Up</h4>
-                    <div className="card-body">
-                        <form onSubmit={handleFormSubmit}>
-                            <input
-                                className="form-input"
-                                placeholder="Your username"
-                                name="username"
-                                type="username"
-                                id="username"
-                                value={formState.username}
-                                onChange={handleChange}
-                            />
+        <>
+        <main className="">
+            <div className="myForm">
 
-                            <input
-                                className="form-input"
-                                placeholder="Your email"
-                                name="email"
-                                type="email"
-                                id="email"
-                                value={formState.email}
-                                onChange={handleChange}
-                            />
-                            <input
-                                className="form-input"
-                                placeholder="Your user Github"
-                                name="userGithub"
-                                type="userGithub"
-                                id="userGithub"
-                                value={formState.userGithub}
-                                onChange={handleChange}
-                            />
+                {/* <div className="card">
+                        <h4 className="card-header">Sign Up</h4>
+                        <div className="card-body"> */}
+                <form className="form-style" id="form" onSubmit={handleFormSubmit}>
+                    <input
+                        className="form-input"
+                        placeholder="Your username"
+                        name="username"
+                        type="username"
+                        id="username"
+                        value={formState.username}
+                        onChange={handleChange}
+                    />
 
-                            <input
-                                className="form-input"
-                                placeholder="******"
-                                name="password"
-                                type="password"
-                                id="password"
-                                value={formState.password}
-                                onChange={handleChange}
-                            />
-                            <button className="btn d-block w-100" type="submit">
-                                Submit
-                            </button>
-                        </form>
+                    <input
+                        className="form-input"
+                        placeholder="Your email"
+                        name="email"
+                        type="email"
+                        id="email"
+                        value={formState.email}
+                        onChange={handleChange}
+                    />
+                    <input
+                        className="form-input"
+                        placeholder="Your user Github"
+                        name="userGithub"
+                        type="userGithub"
+                        id="userGithub"
+                        value={formState.userGithub}
+                        onChange={handleChange}
+                    />
 
-                        {error && <div>Signup failed</div>}
+                    <input
+                        className="form-input"
+                        placeholder="******"
+                        name="password"
+                        type="password"
+                        id="password"
+                        value={formState.password}
+                        onChange={handleChange}
+                    />
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox"
+                            id="gridCheck" />
+                        <label id="warn" className="form-check-label" htmlFor="gridCheck">
+                            I acknowledge that this app is only for working code that can be improved, not for broken apps.
+                        </label>
                     </div>
-                </div>
+                    <div className="submit">
+                        <button id="btn-submit" className="btn btn-light" data-testid="button" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+                <img id="dog" style={{ height: "200px", width: "200px", left: 0 }} src={dog} alt="cute dog with glasses" />
             </div>
+
+            {error && <div>Signup failed</div>}
+
+
+
+
         </main>
+        < Footer />
+        </>
     )
 
 }
