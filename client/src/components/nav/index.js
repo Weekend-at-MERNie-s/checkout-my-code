@@ -5,31 +5,47 @@ import Auth from '../../utils/auth';
 import { NavLink } from "react-router-dom";
 
 function Nav() {
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
+    };
+
     return (
-        <>
-            <nav id="main-nav">
+        <nav id="main-nav">
 
-                <h1 id="title">
-                    <NavLink className="navBtnLink" to="/">Codespect</NavLink>
-                </h1>
-
-                <ul id="nav-list">
-
-                    <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">Login</NavLink>
-                    </li>
-                    <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/join">Join</NavLink>
-                    </li>
-                    <li className="navBtn">
+            <h1 id="title">
+                <NavLink className="navBtnLink" to="/">Codespect</NavLink>
+            </h1>
+            <ul id="nav-list">
+            
+                {Auth.loggedIn() ? (
+                    <>
+                        <NavLink to="/user-page">Me</NavLink>
+                        <a className="navBtnLink" href="/" onClick={logout}>
+                            Logout
+                        </a>
+                    </>
+                ) : (
+                    <>
+                        <li className="navBtn">
+                            <NavLink className="navBtnLink" to="/login">Login</NavLink>
+                        </li>
+                        <li className="navBtn">
+                            <NavLink className="navBtnLink" to="/join">Join</NavLink>
+                        </li>
+                         <li className="navBtn">
                         <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
                     </li>
-                
+                    </>
+                )}
                 </ul>
             </nav>
-        </>
+
+        
 
     );
+
+
 }
 
 
