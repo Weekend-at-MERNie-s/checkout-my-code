@@ -15,7 +15,7 @@ const Join = () => {
     });
 
     const [addUser, { error }] = useMutation(ADD_USER);
-    const [isSubscribed, setIsSubscribed] = useState(false);
+    // const [isSubscribed, setIsSubscribed] = useState(false);
 
     const [errorMessage, setErrorMessage] = useState('');
     const { username, email, password, userGithub } = formState;
@@ -39,8 +39,13 @@ const Join = () => {
     };
 
     const handleChange = (e) => {
+        const { name, value } = e.target;
 
-
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    
         if (e.target.name === 'email') {
             const isValid = validateEmail(e.target.value);
             if (!isValid) {
@@ -61,24 +66,24 @@ const Join = () => {
         <>
             <div className="myForm">
 
-                <form id="form" className="form-style">
+                <form onSubmit={handleSubmit} id="form" className="form-style">
                     <div>
                         <label htmlFor="name">Username:</label>
-                        <input className="form-input" type="text" name="username" defaultValue={username} onBlur={handleChange} />
+                        <input className="form-input" type="username" name="username" id="username" value={formState.username} onChange={handleChange} onBlur={handleChange} />
                     </div>
                     <div>
-                        <label htmlFor="name">Github Username:</label>
-                        <input className="form-input" type="text" name="userGithub" defaultValue={userGithub} onBlur={handleChange} />
+                        <label htmlFor="username">Github Username:</label>
+                        <input className="form-input" type="userGithub" name="userGithub" id="userGithub" value={formState.userGithub}  onChange={handleChange}  onBlur={handleChange} />
                     </div>
 
                     <div>
                         <label htmlFor="email">Email address:</label>
-                        <input className="form-input" type="email" name="email" defaultValue={email} onBlur={handleChange} />
+                        <input className="form-input" type="email" name="email" value={formState.email}  onChange={handleChange}  onBlur={handleChange} />
                     </div>
 
                     <div>
-                        <label htmlFor="email">Password:</label>
-                        <input className="form-input" type="password" name="password" defaultValue={password} onBlur={handleChange} />
+                        <label htmlFor="password">Password:</label>
+                        <input className="form-input" type="password" name="password" value={formState.password}  onChange={handleChange}  onBlur={handleChange} />
                     </div>
 
                     {errorMessage && (
