@@ -22,3 +22,11 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+  mutation addPost($title: String!, $postContent: String!, $postRepoLink: String!, $deployedApplication: String) {
+    addPost(title: $title, postContent: $postContent, postRepoLink: $postRepoLink, deployedApplication: $deployedApplication) {
+      _id
+    }
+  }
+`;

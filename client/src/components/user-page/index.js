@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import css from "./style.css";
 import SinglePost from "../single-post";
 import dog from '../../assets/images/dog-cartoon.png'
+import { useMutation } from '@apollo/client';
+import { ADD_POST } from '../../utils/mutations';
 
 function UserPage() {
     const [title, setTitle] = useState('');
@@ -10,22 +12,25 @@ function UserPage() {
     const [justify, setJustify]= useState('');
 
     const [postList, setPostList]= useState([]);
+    const [addPost, {data,loading,error}]=useMutation(ADD_POST);
 
-    const handleSubmit = (event)=> {
+    const handleSubmit = async(event)=> {
         event.preventDefault();
         console.log('title', title)
         console.log('github', github)
         console.log('deploy', deploy)
         console.log('justify', justify)
 
-        // await fetch.post  (title, github, deploy, justify)
+    await addPost ({
+      variables:{title, postRepoLink:github, deployedApplication:deploy, postContent:justify}
+    }) 
 
-        // setTitle('');
-        // setGithub('');
-        // setDeploy('');
-        // setJustify('');
+        setTitle('');
+        setGithub('');
+        setDeploy('');
+        setJustify('');
     }
-   
+   console.log(data,loading,error)
 useEffect(() => {
   posts()
 }, [])
@@ -38,11 +43,11 @@ const posts = async ()=>{
     //     let result = await fetch.get('/user-page')
     //     setPostList(await result.json())
     //   }, []);
-      // if (response.ok) {
-      //   document.location.replace('/');
-      // } else {
-      //   alert(response.statusText);
-      // }
+    //   if (response.ok) {
+    //     document.location.replace('/');
+    //   } else {
+    //     alert(response.statusText);
+
   return (
     <section className='user-post-page'>
       <form className="post-form" onSubmit={handleSubmit}>

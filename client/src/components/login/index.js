@@ -1,4 +1,4 @@
-
+import Auth from '../../utils/auth';
 import css from '../../components/join/join.css'
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
@@ -32,7 +32,8 @@ const Login = () => {
       const { data } = await login({
         variables: { ...formState },
       });
-
+      console.log(data);
+      Auth.login(data.login.token);
       console.log(data);
     } catch (e) {
       console.error(e);
