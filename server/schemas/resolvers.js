@@ -119,6 +119,12 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in friend!')
     },
 
+    // editPost: async (parents, args, context) => {
+    //   return await Post.findByIdAndUpdate(
+    //     { _id: }
+    //   )
+    // },
+
     removeComment: async (parent, { postId, commentId }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
