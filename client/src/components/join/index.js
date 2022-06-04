@@ -1,112 +1,116 @@
 
 import css from './join.css'
 import React, { useState } from 'react';
-import { validateEmail } from '../../utils/helpers';
 import dog from '../../assets/images/dog-cartoon.png'
 import Footer from '../footer';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 
+
 const Join = () => {
+
 
     const [formState, setFormState] = useState({
         username: '', email: '',
         password: '', userGithub: '',
     });
-
     const [addUser, { error }] = useMutation(ADD_USER);
-    const [isSubscribed, setIsSubscribed] = useState(false);
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const { username, email, password, userGithub } = formState;
+    // update state based on form input changes
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // submit form
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
 
         try {
             const { data } = await addUser({
-                variables: { ...formState }
+                variables: { ...formState },
             });
-            console.log(data)
+
+            console.log(data);
         } catch (e) {
-            console.error(e)
-        }
-        if (!errorMessage) {
-            setFormState({ [e.target.name]: e.target.value });
-            console.log('Form', formState);
+            console.error(e);
         }
     };
-
-    const handleChange = (e) => {
-
-
-        if (e.target.name === 'email') {
-            const isValid = validateEmail(e.target.value);
-            if (!isValid) {
-                setErrorMessage('Your email is invalid.');
-            } else {
-                setErrorMessage('');
-            }
-        } else {
-            if (!e.target.value.length) {
-                setErrorMessage(`${e.target.name} is required.`);
-            } else {
-                setErrorMessage('');
-            }
-        }
-    };
-
     return (
         <>
+        <main className="">
             <div className="myForm">
 
-                <form id="form" className="form-style">
-                    <div>
-                        <label htmlFor="name">Username:</label>
-                        <input className="form-input" type="text" name="username" defaultValue={username} onBlur={handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="name">Github Username:</label>
-                        <input className="form-input" type="text" name="userGithub" defaultValue={userGithub} onBlur={handleChange} />
-                    </div>
+                {/* <div className="card">
+                        <h4 className="card-header">Sign Up</h4>
+                        <div className="card-body"> */}
+                <form className="form-style" id="form" onSubmit={handleFormSubmit}>
+                    <input
+                        className="form-input"
+                        placeholder="Your username"
+                        name="username"
+                        type="username"
+                        id="username"
+                        value={formState.username}
+                        onChange={handleChange}
+                    />
 
-                    <div>
-                        <label htmlFor="email">Email address:</label>
-                        <input className="form-input" type="email" name="email" defaultValue={email} onBlur={handleChange} />
-                    </div>
+                    <input
+                        className="form-input"
+                        placeholder="Your email"
+                        name="email"
+                        type="email"
+                        id="email"
+                        value={formState.email}
+                        onChange={handleChange}
+                    />
+                    <input
+                        className="form-input"
+                        placeholder="Your user Github"
+                        name="userGithub"
+                        type="userGithub"
+                        id="userGithub"
+                        value={formState.userGithub}
+                        onChange={handleChange}
+                    />
 
-                    <div>
-                        <label htmlFor="email">Password:</label>
-                        <input className="form-input" type="password" name="password" defaultValue={password} onBlur={handleChange} />
-                    </div>
-
-                    {errorMessage && (
-                        <div>
-                            <p className="error-text">{errorMessage}</p>
-                        </div>
-                    )}
-
-                    {/* <div className="form-check">
+                    <input
+                        className="form-input"
+                        placeholder="******"
+                        name="password"
+                        type="password"
+                        id="password"
+                        value={formState.password}
+                        onChange={handleChange}
+                    />
+                    <div className="form-check">
                         <input className="form-check-input" type="checkbox"
-                            onChange={handleSubmit} id="gridCheck" />
+                            id="gridCheck" />
                         <label id="warn" className="form-check-label" htmlFor="gridCheck">
                             I acknowledge that this app is only for working code that can be improved, not for broken apps.
                         </label>
-                    </div> */}
-                    <div className="submit">
-                        <button id="btn-submit" className="btn btn-light" data-testid="button" type="submit">Submit</button>
                     </div>
-
-
+                    <div className="submit">
+                        <button id="btn-submit" className="btn btn-light" data-testid="button" type="submit">
+                            Submit
+                        </button>
+                    </div>
                 </form>
                 <img id="dog" style={{ height: "200px", width: "200px", left: 0 }} src={dog} alt="cute dog with glasses" />
             </div>
-            {error && <div>Sign up failed</div>}
 
-            <Footer />
+            {error && <div>Signup failed</div>}
+
+
+
+
+        </main>
+        < Footer />
         </>
-
     )
 
 }
