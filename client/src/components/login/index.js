@@ -3,6 +3,7 @@ import css from '../../components/join/join.css'
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations'
+import Auth from '../../utils/auth';
 
 
 const Login = () => {
@@ -35,19 +36,22 @@ const Login = () => {
       console.log(data);
       Auth.login(data.login.token);
       console.log(data);
+      Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }
-  };
+  }
   return (
     <>
       <main className="">
         <div className="login">
           <form className="form-style" id="login"
-           onSubmit={handleFormSubmit}>
-           <h5 style={{color: "#774c2a", 
-           textAlign: "center",
-           paddingBottom:"8px"}}>Welcome Back! </h5>
+            onSubmit={handleFormSubmit}>
+            <h5 style={{
+              color: "#774c2a",
+              textAlign: "center",
+              paddingBottom: "8px"
+            }}>Welcome Back! </h5>
             <input
               className="form-input"
               placeholder="Your email"
@@ -69,7 +73,7 @@ const Login = () => {
 
             <div className="submit">
               <button id="btn-submit" className="btn btn-light" data-testid="button" type="submit">
-               Login
+                Login
               </button>
             </div>
           </form>
