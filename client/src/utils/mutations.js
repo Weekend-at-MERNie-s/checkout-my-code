@@ -17,7 +17,6 @@ export const ADD_USER = gql`
     addUser(username: $username,userGithub:$userGithub, email: $email, password: $password) {
       token
       user {
-        _id
         username
       }
     }

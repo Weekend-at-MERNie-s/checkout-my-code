@@ -15,7 +15,7 @@ function Nav() {
                 <ul id="nav-list">
 
                     <li className="navBtn">
-                        <NavLink className="navBtnLink" to="/login">Log In</NavLink>
+                        <NavLink className="navBtnLink" to="/login">Login</NavLink>
                     </li>
                     <li className="navBtn">
                         <NavLink className="navBtnLink" to="/join">Join</NavLink>
