@@ -1,5 +1,6 @@
 
 import './App.css';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 import React from 'react';
 import Header from './components/header'
@@ -14,29 +15,39 @@ import Main from './components/main';
 import UserPage from './components/user-page';
 import Join from './components/join';
 import NoMatch from '../../client/src/pages/NoMatch'
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
 
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <>
-      <Router>
-        {/* < LandingPage /> */}
-        < Header />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/join" element={<Join />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/user-page" element={<UserPage />} />
-          <Route
-            path="*"
-            element={<NoMatch />}
-          />
+    <ApolloProvider client={client}>
+      <>
+        <Router>
+          {/* < LandingPage /> */}
+          < Header />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/join" element={<Join />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/main" element={<Main />} />
+            <Route path="/user-page" element={<UserPage />} />
+            <Route
+              path="*"
+              element={<NoMatch />}
+            />
 
-        </Routes>
-      </Router>
-   
-    </>
+          </Routes>
+        </Router>
+
+
+      </>
+    </ApolloProvider>
   );
 }
 

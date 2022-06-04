@@ -9,109 +9,92 @@ import { ADD_USER } from '../../utils/mutations';
 
 const Join = () => {
 
+
     const [formState, setFormState] = useState({
         username: '', email: '',
         password: '', userGithub: '',
     });
-
     const [addUser, { error }] = useMutation(ADD_USER);
-    // const [isSubscribed, setIsSubscribed] = useState(false);
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const { username, email, password, userGithub } = formState;
-
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const { data } = await addUser({
-                variables: { ...formState }
-            });
-            console.log(data)
-        } catch (e) {
-            console.error(e)
-        }
-        if (!errorMessage) {
-            setFormState({ [e.target.name]: e.target.value });
-            console.log('Form', formState);
-        }
-    };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    // update state based on form input changes
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
         setFormState({
             ...formState,
             [name]: value,
         });
-    
-        if (e.target.name === 'email') {
-            const isValid = validateEmail(e.target.value);
-            if (!isValid) {
-                setErrorMessage('Your email is invalid.');
-            } else {
-                setErrorMessage('');
-            }
-        } else {
-            if (!e.target.value.length) {
-                setErrorMessage(`${e.target.name} is required.`);
-            } else {
-                setErrorMessage('');
-            }
-        }
     };
 
+    // submit form
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const { data } = await addUser({
+                variables: { ...formState },
+            });
+
+            console.log(data);
+        } catch (e) {
+            console.error(e);
+        }
+    };
     return (
-        <>
-            <div className="myForm">
+        <main className="flex-row justify-center mb-4">
+            <div className="col-12 col-md-6">
+                <div className="card">
+                    <h4 className="card-header">Sign Up</h4>
+                    <div className="card-body">
+                        <form onSubmit={handleFormSubmit}>
+                            <input
+                                className="form-input"
+                                placeholder="Your username"
+                                name="username"
+                                type="username"
+                                id="username"
+                                value={formState.username}
+                                onChange={handleChange}
+                            />
 
-                <form onSubmit={handleSubmit} id="form" className="form-style">
-                    <div>
-                        <label htmlFor="name">Username:</label>
-                        <input className="form-input" type="username" name="username" id="username" value={formState.username} onChange={handleChange} onBlur={handleChange} />
+                            <input
+                                className="form-input"
+                                placeholder="Your email"
+                                name="email"
+                                type="email"
+                                id="email"
+                                value={formState.email}
+                                onChange={handleChange}
+                            />
+                            <input
+                                className="form-input"
+                                placeholder="Your user Github"
+                                name="userGithub"
+                                type="userGithub"
+                                id="userGithub"
+                                value={formState.userGithub}
+                                onChange={handleChange}
+                            />
+
+                            <input
+                                className="form-input"
+                                placeholder="******"
+                                name="password"
+                                type="password"
+                                id="password"
+                                value={formState.password}
+                                onChange={handleChange}
+                            />
+                            <button className="btn d-block w-100" type="submit">
+                                Submit
+                            </button>
+                        </form>
+
+                        {error && <div>Signup failed</div>}
                     </div>
-                    <div>
-                        <label htmlFor="username">Github Username:</label>
-                        <input className="form-input" type="userGithub" name="userGithub" id="userGithub" value={formState.userGithub}  onChange={handleChange}  onBlur={handleChange} />
-                    </div>
-
-                    <div>
-                        <label htmlFor="email">Email address:</label>
-                        <input className="form-input" type="email" name="email" value={formState.email}  onChange={handleChange}  onBlur={handleChange} />
-                    </div>
-
-                    <div>
-                        <label htmlFor="password">Password:</label>
-                        <input className="form-input" type="password" name="password" value={formState.password}  onChange={handleChange}  onBlur={handleChange} />
-                    </div>
-
-                    {errorMessage && (
-                        <div>
-                            <p className="error-text">{errorMessage}</p>
-                        </div>
-                    )}
-
-                    {/* <div className="form-check">
-                        <input className="form-check-input" type="checkbox"
-                            onChange={handleSubmit} id="gridCheck" />
-                        <label id="warn" className="form-check-label" htmlFor="gridCheck">
-                            I acknowledge that this app is only for working code that can be improved, not for broken apps.
-                        </label>
-                    </div> */}
-                    <div className="submit">
-                        <button id="btn-submit" className="btn btn-light" data-testid="button" type="submit">Submit</button>
-                    </div>
-
-
-                </form>
-                <img id="dog" style={{ height: "200px", width: "200px", left: 0 }} src={dog} alt="cute dog with glasses" />
+                </div>
             </div>
-            {error && <div>Sign up failed</div>}
-
-            <Footer />
-        </>
-
+        </main>
     )
 
 }
