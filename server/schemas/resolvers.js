@@ -82,44 +82,15 @@ const resolvers = {
         return post;
       }
       throw new AuthenticationError('You need to be logged in friend!')
-    }
+    },
 
-
-  //   comment: async (parent, { commentId }) => {
-  //     return Comment.findOne({ _id:  commentId });
-  //   },
-  // },
-
-  // Mutation: {
-  //     //USE EITHER LINES 17-19 OR 20-31, I THINK ITS 20-31
-  //   // addComment: async (parent, { commentText, commentAuthor }) => {
-  //   //   return Comment.create({ commentText, commentAuthor });
-  //   // },
-  //   addComment: async (parent, { postId, commentText }) => {
-  //     return Post.findOneAndUpdate(
-  //       { _id: postId },
-  //       {
-  //         $addToSet: { comments: { commentText } },
-  //       },
-  //       {
-  //         new: true,
-  //         runValidators: true,
-  //       }
-  //     );
-  //   },
-
-  //     //USE EITHER LINES 34-36 OR 37-45, I THINK ITS 37-45
-  //   // removeComment: async (parent, { commentId }) => {
-  //   //   return Comment.findOneAndDelete({ _id: commentId });
-  //   // },
-  //   removeComment: async (parent, { postId, commentId }) => {
-  //     return Post.findOneAndUpdate(
-  //       { _id: postId },
-  //       { $pull: { comments: { _id: commentId } } },
-  //       { new: true }
-  //     );
-  //   },
-  // },
+    removeComment: async (parent, { postId, commentId }) => {
+      return Post.findOneAndUpdate(
+        { _id: postId },
+        { $pull: { comments: { _id: commentId } } },
+        { new: true }
+      );
+    },
   }
 };
 
