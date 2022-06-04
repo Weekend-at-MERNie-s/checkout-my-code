@@ -1,6 +1,5 @@
 
 import './App.css';
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 import React from 'react';
 import Header from './components/header'
@@ -15,6 +14,11 @@ import Main from './components/main';
 import UserPage from './components/user-page';
 import Join from './components/join';
 import NoMatch from '../../client/src/pages/NoMatch'
+
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+
+import { setContext } from '@apollo/client/link/context';
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
 });
@@ -24,6 +28,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -35,6 +48,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/join" element={<Join />} />
             <Route path="/login" element={<Login />} />
+            {/* main and user-page should be same */}
             <Route path="/main" element={<Main />} />
             <Route path="/user-page" element={<UserPage />} />
             <Route
