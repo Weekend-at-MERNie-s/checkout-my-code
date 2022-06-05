@@ -59,6 +59,15 @@ const resolvers = {
 
       return { token, user };
     },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        const updateUser = await User.findByIdAndUpdate(
+          context.user._id, args,
+          { new: true,}
+        )
+      }
+      throw new AuthenticationError('You need to be logged in friend!')
+    },
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -90,7 +99,6 @@ const resolvers = {
       },
       
     addPost: async (parent, args, context) => {
-      console.log("context", context.user);
       if (context.user) {
         const post = await Post.create({
           ...args,
