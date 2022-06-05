@@ -17,6 +17,37 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('comments')
+        .populate('post')
+        .populate('friends');
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('comments')
+        .populate('post')
+        .populate('friends');
+    },
+    posts: async () => {
+      return Post.find()
+        .populate('comments')
+    },
+
+    post: async (parent,  { _id }) => {
+      return Post.findOne({ _id })
+      .populate('comments')
+    },
+
+    comments: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Comment.find(params).sort({ createAt: -1 })
+    },
+    comment: async (parent,  { _id }) => {
+      return Comment.findOne({ _id });
+    }
   },
 
   Mutation: {
@@ -87,6 +118,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in friend!')
     },
+
+    // editPost: async (parents, args, context) => {
+    //   return await Post.findByIdAndUpdate(
+    //     { _id: }
+    //   )
+    // },
 
     removeComment: async (parent, { postId, commentId }) => {
       return Post.findOneAndUpdate(
