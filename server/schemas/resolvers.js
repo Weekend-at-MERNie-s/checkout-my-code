@@ -59,6 +59,15 @@ const resolvers = {
 
       return { token, user };
     },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        const updateUser = await User.findByIdAndUpdate(
+          context.user._id, args,
+          { new: true,}
+        )
+      }
+      throw new AuthenticationError('You need to be logged in friend!')
+    },
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -77,62 +86,81 @@ const resolvers = {
 
       return { token, user };
     },
-    addComment: async (parent, { postId, commentText }) => {
-      return Post.findOneAndUpdate(
-        { _id: postId },
-        {
-          $addToSet: { comments: { commentText } },
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-    },
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
         const updateUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { friends: friendId } },
           { new: true }
-        ).populate("friends");
-        return updateUser;
-      }
-      throw new AuthenticationError("You need to be logged in friend!");
-    },
-
+          ).populate("friends");
+          return updateUser;
+        }
+        throw new AuthenticationError("You need to be logged in friend!");
+      },
+      
     addPost: async (parent, args, context) => {
-      console.log("context", context.user);
       if (context.user) {
         const post = await Post.create({
           ...args,
           username: context.user.username,
         });
-
+          
         await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { posts: post._id } },
           { new: true }
+          );
+          return post;
+          }
+        throw new AuthenticationError('You need to be logged in friend!')
+        },
+        
+    editPost: async (parents, args, context) => {
+      if (context.user) {
+        const { postId,
+          title,
+          postContent,
+          postRepoLink,
+          deployedApplication
+          } = args
+          const updatePost = await Post.findByIdAndUpdate(
+            postId, 
+            {
+            title: title,
+            postContent: postContent,
+            postRepoLink: postRepoLink,
+            deployedApplication: deployedApplication
+            }
+          );
+          return updatePost
+      }
+        throw new AuthenticationError('You need to be logged in friend!')
+    },
+          
+    addComment: async (parent, { postId, commentText }, context) => {
+      if (context.user) {
+        const updateComment = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { commentText, username: context.user.username },},
+          {new: true, runValidators: true,}
         );
-        return post;
+        return updateComment
       }
       throw new AuthenticationError('You need to be logged in friend!')
     },
-
-    // editPost: async (parents, args, context) => {
-    //   return await Post.findByIdAndUpdate(
-    //     { _id: }
-    //   )
-    // },
-
-    removeComment: async (parent, { postId, commentId }) => {
-      return Post.findOneAndUpdate(
-        { _id: postId },
-        { $pull: { comments: { _id: commentId } } },
-        { new: true }
-      );
-    },
-  }
+          
+    removeComment: async (parent, { postId, commentId }, context) => {
+      if (context.user) {
+        const updateComment = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $pull: { comments: { _id: commentId } } },
+          { new: true }
+        )
+        return updateComment
+      }
+      throw new AuthenticationError('You need to be logged in friend!')
+    }
+  },
 };
 
 module.exports = resolvers;
