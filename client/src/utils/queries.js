@@ -1,19 +1,21 @@
-// import { gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-// export const QUERY_POSTS = gql`
-//   query posts($username: String) {
-//     thoughts(username: $username) {
-//       _id
-//       title
-//       postContent
-//       postRepoLink
-//       reactionCount
-//       reactions {
-//         _id
-//         createdAt
-//         username
-//         reactionBody
-//       }
-//     }
-//   }
-// `;
+export const QUERY_POSTS = gql`
+  query posts($username: String) {
+   posts(username: $username) {
+        _id: ID
+        title: String 
+        postContent: String
+        postRepoLink: String
+        deployedApplication: String
+        createdAt: String
+        username: String 
+       comments {
+        commentText
+        createdAt
+        username
+       
+      }
+    }
+  }
+`;

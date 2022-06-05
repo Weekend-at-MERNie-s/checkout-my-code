@@ -1,22 +1,24 @@
 import React from "react";
 import css from "./style.css";
+import { useQuery } from '@apollo/client';
+import { QUERY_POSTS } from "../../utils/queries";
 
 function Main() {
+
+  const { loading, data } = useQuery(QUERY_POSTS);
+  const posts = data?.posts || [];
+  console.log(posts);
+
   return (
-    <section>
-      <div className="checkout">
-        <h1>Checkout Code!</h1>
-        <h3>
-          Browse other users code samples and leave some uplifting commentary or
-          import your own files and put them up for review! Please be kind and
-          happy coding!
-        </h3>
-        <div className="code-display">
-           *list of users posted code files here*
-          
-        </div>
+
+
+    <main>
+      <div className='flex-row justify-space-between'>
+        <div className='col-12 mb-3'>{/* PRINT THOUGHT LIST */}</div>
       </div>
-    </section>
+    </main>
   );
+
+
 }
 export default Main;

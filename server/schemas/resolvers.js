@@ -31,15 +31,24 @@ const resolvers = {
         .populate('post')
         .populate('friends');
     },
-    posts: async () => {
-      return Post.find()
-        .populate('comments')
-    },
 
-    post: async (parent,  { _id }) => {
-      return Post.findOne({ _id })
-      .populate('comments')
+    posts: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Post.find(params).sort({ createdAt: -1 });
     },
+    posts: async (parent, { _id }) => {
+      return Post.findOne({ _id });
+    },
+  
+    // posts: async () => {
+    //   return Post.find()
+    //     .populate('comments')
+    // },
+
+    // post: async (parent,  { _id }) => {
+    //   return Post.findOne({ _id })
+    //   .populate('comments')
+    // },
 
     comments: async (parent, { username }) => {
       const params = username ? { username } : {};
