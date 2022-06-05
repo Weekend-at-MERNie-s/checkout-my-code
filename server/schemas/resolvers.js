@@ -32,14 +32,15 @@ const resolvers = {
         .populate('friends');
     },
 
-    posts: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Post.find(params).sort({ createdAt: -1 });
+    posts: async () => {
+      return Post.find()
+        .populate('comments')
     },
-    post: async (parent, { _id }) => {
-      return Post.findOne({ _id });
+
+    post: async (parent,  { _id }) => {
+      return Post.findOne({ _id })
+      .populate('comments')
     },
-  
     // posts: async () => {
     //   return Post.find()
     //     .populate('comments')
