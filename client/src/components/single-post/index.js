@@ -1,9 +1,11 @@
 import React from "react";
-import css from "./style.css";
+
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
-
+import css from '../post-list/post-list.css'
+import Comment from "../comment";
+import dog from '../../assets/images/dog-cartoon.png'
 function SinglePost() {
   const { id: postId } = useParams();
 
@@ -17,34 +19,39 @@ function SinglePost() {
     return <div>Loading...</div>;
   }
   return (
-    <section>
-      <div>
-        <div className="card mb-3">
-          <p className="card-header"
-            style={{ textAlign: "center", color: "white" }}>
-            <span style={{ fontWeight: 700 }} className="text-light">
-            {post.title}
-            </span>{' '}
-            
-          </p>
-          <div className="card-body">
+    <>
+      <section id="posts">
+        <div>
+          <div className="card mb-3">
+            <p className="card-header"
+              style={{ textAlign: "center", color: "white" }}>
+              <span style={{ fontWeight: 700 }} className="text-light">
+                {post.title}
+              </span>{' '}
 
-            <p className="mb-0">{post.postContent} /</p>
-            <p className="mb-0">Repo Link:{post.postRepoLink}
             </p>
-            <p className="mb-0">Deployed at: {post.deployedApplication}
-            </p>
-            <p>
-              {post.username}&nbsp;
-              posted on &nbsp;
-              {post.createdAt}
-            </p>
+            <div className="card-body">
+
+              <p className="mb-0">{post.postContent} /</p>
+              <p className="mb-0">Repo Link:{post.postRepoLink}
+              </p>
+              <p className="mb-0">Deployed at: {post.deployedApplication}
+              </p>
+              <p>
+                {post.username}&nbsp;
+                posted on &nbsp;
+                {post.createdAt}
+              </p>
 
 
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+        {post.commentCount > 0 && <Comment comments={post.comments} />}
+
+      </section>
+      <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
+    </>
   );
 }
 export default SinglePost;

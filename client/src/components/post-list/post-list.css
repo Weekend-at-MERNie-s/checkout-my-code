@@ -11,6 +11,9 @@
     background-color: rgb(244 228 194 / 49%) !important;
     border: solid 1px white;
 }
+.ternary{
+    color:#774c2a !important;
+font-weight: bold;}
 
 .card-header {
     background-color: #774c2a !important;

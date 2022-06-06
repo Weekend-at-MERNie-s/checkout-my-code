@@ -46,7 +46,12 @@ const PostList = ({ posts, title }) => {
               posted on &nbsp; 
                {post.createdAt}
             </p>
-         
+            <Link to={`/post/${post._id}`}>
+            <p className="ternary">
+                {/* {post.commentCount} */}
+                {post.commentCount ? 'See comment(s)' : 'Make a comment'} 
+              </p>
+              </Link>
               
             </div>
           </div>

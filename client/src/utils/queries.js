@@ -10,8 +10,10 @@ export const QUERY_POSTS = gql`
     postRepoLink
     deployedApplication
     createdAt
+    commentCount
     comments{
       _id
+      username
       commentAuthor
       commentText
       createdAt
