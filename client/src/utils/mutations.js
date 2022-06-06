@@ -30,3 +30,7 @@ export const ADD_POST = gql`
     }
   }
 `;
+
+// export const ADD_FRIEND = gql`
+//   mutation addFriend($id: ID!)
+// `
