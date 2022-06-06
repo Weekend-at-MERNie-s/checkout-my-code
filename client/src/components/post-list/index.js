@@ -1,6 +1,8 @@
 
 
 import React from 'react';
+import css from './post-list.css'
+
 
 const PostList = ({ posts, title }) => {
   if (!posts.length) {
@@ -8,19 +10,21 @@ const PostList = ({ posts, title }) => {
   }
 
   return (
+    <section id="posts">
     <div>
       <h3>{title}</h3>
       {posts &&
         posts.map(post => (
+       
           <div key={post._id} className="card mb-3">
              
-            <p className="card-header">
+            <p  style={{textAlign: "center", color: "white"}}className="card-header">
             {post.title}     
              
             </p>
           
             <div className="card-body">
-            <ul class="list-group">
+           
               <p className="mb-0">{post.postContent}
         
               {/* <p>{post.post.postContent}</p> */}
@@ -39,12 +43,14 @@ const PostList = ({ posts, title }) => {
               posted on &nbsp; 
                {post.createdAt}
             </p>
-            </ul>
+         
               
             </div>
           </div>
+         
         ))}
     </div>
+    </section>
   );
 };
 

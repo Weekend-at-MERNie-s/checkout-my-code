@@ -35,6 +35,7 @@ const resolvers = {
     posts: async () => {
       return Post.find()
         .populate('comments')
+        .sort({ createAt: -1 })
     },
 
     post: async (parent,  { _id }) => {
