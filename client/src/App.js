@@ -19,12 +19,11 @@ import NoMatch from "../../client/src/pages/NoMatch";
 import SinglePost from "./components/single-post";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
-  console.log(token);
   return {
     headers: {
       authorization: token ? `Bearer ${token}` : "",
