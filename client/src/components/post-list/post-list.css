@@ -1,0 +1,24 @@
+#posts {
+    padding-top: 20px;
+
+    margin: auto;
+    width: 50% !important;
+
+}
+
+.card-body {
+    z-index: 1;
+    background-color: rgb(244 228 194 / 49%) !important;
+    border: solid 1px white;
+}
+.ternary{
+    color:#774c2a !important;
+font-weight: bold;}
+
+.card-header {
+    background-color: #774c2a !important;
+}
+#glass{
+    height: 30px;
+    width: 30px;
+}

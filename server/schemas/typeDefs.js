@@ -15,12 +15,6 @@ const typeDefs = gql`
         friends: [User]
 
     }
-    type Comment {
-        _id: ID
-        commentText: String
-        commentAuthor: String
-        createdAt: String
-    }
 
     type Post {
         _id: ID
@@ -30,8 +24,18 @@ const typeDefs = gql`
         deployedApplication: String
         createdAt: String
         username: String 
+        commentCount: Int
         comments: [Comment]
     }
+    type Comment {
+        _id: ID
+        commentText: String
+        commentAuthor: String
+        username: String
+        createdAt: String
+    }
+
+
 
 
     type Auth {
@@ -43,7 +47,7 @@ const typeDefs = gql`
           me: User
           users: [User]
           user(username: String!): User
-          posts: [Post]
+          posts(username: String): [Post]
           post(_id: ID!): Post
           comments: [Comment]
           comment(_id: ID!): Comment
@@ -56,7 +60,7 @@ const typeDefs = gql`
         updateUser(username: String, userGithub: String, email: String): User
         addUser(username: String!, userGithub: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addComment(commentText: String!): Post
+        addComment(postId: ID!,commentText: String!): Post
         removeComment(commentId: ID!): Post
         addFriend(friendId: ID!): User
         addPost(title: String!, postContent: String!, postRepoLink: String!, deployedApplication: String): Post

@@ -51,7 +51,18 @@ const postSchema = new Schema({
       },
     ],
     comments: [Comment.schema]
-  });
+  },
+    {
+      toJSON: {
+        getters: true
+      }
+    }
+  );
+
+    postSchema.virtual('commentCount').get(function() {
+      return this.comments.length;
+    });
+ 
 const Post = model('Post', postSchema);
 
 module.exports = Post;

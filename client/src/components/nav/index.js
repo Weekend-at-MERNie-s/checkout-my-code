@@ -16,7 +16,12 @@ function Nav() {
             <h1 id="title">
                 <NavLink className="navBtnLink" to="/">Codespect</NavLink>
             </h1>
+
+         
             <ul id="nav-list">
+            <li className="navBtn">
+                            <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
+                        </li>
 
                 {Auth.loggedIn() ? (
                     <>
@@ -41,9 +46,7 @@ function Nav() {
                         <li className="navBtn">
                             <NavLink className="navBtnLink" to="/join">Join</NavLink>
                         </li>
-                        <li className="navBtn">
-                            <NavLink className="navBtnLink" to="/main">Checkout Code</NavLink>
-                        </li>
+                     
                     </>
                 )}
             </ul>

@@ -16,6 +16,8 @@ import Main from "./components/main";
 import UserPage from "./components/user-page";
 import Join from "./components/join";
 import NoMatch from "../../client/src/pages/NoMatch";
+import SinglePost from "./components/single-post";
+
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
 });
@@ -40,16 +42,24 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
           {/* < LandingPage /> */}
           <Header />
+         
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/join" element={<Join />} />
             <Route path="/login" element={<Login />} />
             <Route path="/main" element={<Main />} />
             <Route path="/user-page" element={<UserPage />} />
+            <Route
+                path="/post/:id"
+                element={<SinglePost />}
+              />
             <Route path="*" element={<NoMatch />} />
+            
           </Routes>
+          </div>
         </Router>
       </>
     </ApolloProvider>

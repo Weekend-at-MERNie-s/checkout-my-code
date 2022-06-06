@@ -29,7 +29,7 @@ const userSchema = new Schema({
     unique: true,
     required: 'Enter your Github link'
   },
-  posts: [
+  post: [
     {
     type: Schema.Types.ObjectId,
     ref: 'Post'
