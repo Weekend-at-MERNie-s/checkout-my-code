@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import css from './post-list.css'
 
 
@@ -17,9 +18,11 @@ const PostList = ({ posts, title }) => {
         posts.map(post => (
        
           <div key={post._id} className="card mb-3">
-             
-            <p  style={{textAlign: "center", color: "white"}}className="card-header">
-            {post.title}     
+           
+            <p className="card-header" 
+            style={{textAlign: "center", color: "white"}}>
+              <Link to={`/post/${post._id}`}> {post.title}</Link>
+            
              
             </p>
           

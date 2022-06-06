@@ -21,3 +21,22 @@ export const QUERY_POSTS = gql`
     }
   
 `;
+
+export const QUERY_POST = gql `
+query Post($id: ID!) {
+  post(_id: $id) {
+    _id
+    title
+    postContent
+    postRepoLink
+    deployedApplication
+    createdAt
+    username
+    commentCount
+    comments {
+      commentText
+      username
+      createdAt
+    }
+  }
+}`

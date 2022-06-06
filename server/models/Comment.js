@@ -9,9 +9,13 @@ const commentSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
+  username: {
+    type: String,
+    // required: true
+  },
   commentAuthor: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
   },
   createdAt: {
