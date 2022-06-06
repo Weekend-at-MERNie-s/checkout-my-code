@@ -13,17 +13,34 @@ const PostList = ({ posts, title }) => {
       {posts &&
         posts.map(post => (
           <div key={post._id} className="card mb-3">
+             
             <p className="card-header">
+            {post.title}     
+             
+            </p>
+          
+            <div className="card-body">
+            <ul class="list-group">
+              <p className="mb-0">{post.postContent}
+        
+              {/* <p>{post.post.postContent}</p> */}
+              
+                {/* Reactions: {post.reactionCount} || Click to{' '}
+                {post.reactionCount ? 'see' : 'start'} the discussion! */}
+              </p>
+              
+              <p className="mb-0">Repo Link:{post.postRepoLink}
+              </p>
+              <p className="mb-0">Deployed at: {post.deployedApplication}
+              </p>
+
+              <p>
             {post.username}&nbsp;       
               posted on &nbsp; 
                {post.createdAt}
             </p>
-            <div className="card-body">
-              <p>{post.postText}</p>
-              <p className="mb-0">
-                Reactions: {post.reactionCount} || Click to{' '}
-                {post.reactionCount ? 'see' : 'start'} the discussion!
-              </p>
+            </ul>
+              
             </div>
           </div>
         ))}
