@@ -5,8 +5,11 @@ import { QUERY_POST } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 import css from '../post-list/post-list.css'
 import Comment from "../comment";
+import CommentForm from "../add-comment";
+import Auth from '../../utils/auth'
 import dog from '../../assets/images/dog-cartoon.png'
-function SinglePost() {
+
+function SinglePost(props) {
   const { id: postId } = useParams();
 
   const { loading, data } = useQuery(QUERY_POST, {
@@ -50,6 +53,7 @@ function SinglePost() {
         {post.commentCount > 0 && <Comment comments={post.comments} />}
 
       </section>
+      {Auth.loggedIn() && <CommentForm postId={post._id} />}
       <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
     </>
   );
