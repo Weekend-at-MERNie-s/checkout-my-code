@@ -13,8 +13,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $userGithub: String!, $email: String!, $password: String!) {
-    addUser(username: $username,userGithub:$userGithub, email: $email, password: $password) {
+  mutation addUser($username: String!, $userGithub: String!, $email: String!, $password: String!, $bio: String) {
+    addUser(username: $username,userGithub:$userGithub, email: $email, password: $password, bio: $bio) {
       token
       user {
         username
@@ -23,17 +23,57 @@ export const ADD_USER = gql`
   }
 `;
 
+export const EDIT_USER = gql`
+mutation updateUser($username: String, $userGithub: String, $email: String, $bio: String) {
+  updateUser(username: $username, userGithub: $userGithub, email: $email, bio: $bio) {
+    _id
+    username
+    email
+    userGithub
+    bio
+  }
+}`
+
 export const ADD_POST = gql`
   mutation addPost($title: String!, $postContent: String!, $postRepoLink: String!, $deployedApplication: String) {
     addPost(title: $title, postContent: $postContent, postRepoLink: $postRepoLink, deployedApplication: $deployedApplication) {
       _id
+    title
+    postContent
+    postRepoLink
+    deployedApplication
+    createdAt
+    username
     }
   }
 `;
 
-// export const ADD_FRIEND = gql`
-//   mutation addFriend($id: ID!)
-// `
+export const EDIT_POST = gql`
+mutation editPost($postContent: String!, $postRepoLink: String!, $title: String, $deployedApplication: String) {
+  editPost(postContent: $postContent, postRepoLink: $postRepoLink, title: $title, deployedApplication: $deployedApplication) {
+    _id
+    title
+    postContent
+    postRepoLink
+    deployedApplication
+  }
+}
+`
+
+export const ADD_FRIEND = gql`
+  mutation addFriend($id: ID!) {
+    addFriend(friendId: $id) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 export const ADD_COMMENT = gql`
 mutation addComment($postId: ID!, $commentText: String!) {
   addComment(postId: $postId, commentText: $commentText) {
@@ -53,4 +93,4 @@ mutation addComment($postId: ID!, $commentText: String!) {
     }
   }
 }
-`
+` 

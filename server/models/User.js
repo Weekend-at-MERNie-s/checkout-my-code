@@ -6,13 +6,13 @@ const userSchema = new Schema({
   username: {
     type: String,
     unique: true,
-    required: "You must enter a username",
+    required: "You must enter a username friend",
     trim: true,
   },
   email: {
     type: String,
     unique: true,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address friend"],
   },
   password: {
     type: String,
@@ -27,7 +27,12 @@ const userSchema = new Schema({
   userGithub: {
     type: String,
     unique: true,
-    required: 'Enter your Github link'
+    required: 'Enter your Github link friend'
+  },
+  bio: {
+    type: String,
+    minlength: 1,
+    maxlength: 280
   },
   post: [
     {
