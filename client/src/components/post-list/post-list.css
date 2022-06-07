@@ -2,7 +2,7 @@
     padding-top: 20px;
 
     margin: auto;
-    width: 50% !important;
+    width: 40% !important;
 
 }
 
@@ -21,4 +21,14 @@ font-weight: bold;}
 #glass{
     height: 30px;
     width: 30px;
+}
+
+#addComent{
+    border: solid 1px white;
+}
+#addForm{
+   
+   
+    width: 100%;
+    
 }
