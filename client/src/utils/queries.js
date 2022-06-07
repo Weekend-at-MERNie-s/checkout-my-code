@@ -24,7 +24,7 @@ export const QUERY_POSTS = gql`
   
 `;
 
-export const QUERY_POST = gql `
+export const QUERY_POST = gql`
 query Post($id: ID!) {
   post(_id: $id) {
     _id
@@ -43,3 +43,36 @@ query Post($id: ID!) {
   }
 }`;
 
+export const QUERY_ME = gql`
+  {
+  me {
+    _id
+    username
+    email
+    userGithub
+    bio
+    friendCount
+    post {
+      _id
+      title
+      postContent
+      postRepoLink
+      deployedApplication
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+        commentText
+        commentAuthor
+        username
+        createdAt
+      }
+    }
+    friends {
+      _id
+      username
+    }
+  }
+}
+`
