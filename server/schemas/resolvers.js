@@ -2,7 +2,7 @@
 const { User, Comment, Post } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 // const auth = require("../utils/auth");
-const { signToken } = require('../utils/auth');
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -20,17 +20,17 @@ const resolvers = {
     },
     users: async () => {
       return User.find()
-        .select('-__v -password')
-        .populate('comments')
-        .populate('post')
-        .populate('friends');
+        .select("-__v -password")
+        .populate("comments")
+        .populate("post")
+        .populate("friends");
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
-        .select('-__v -password')
-        .populate('comments')
-        .populate('post')
-        .populate('friends');
+        .select("-__v -password")
+        .populate("comments")
+        .populate("post")
+        .populate("friends");
     },
 
     posts: async (parent, { username }) => {
@@ -42,8 +42,8 @@ const resolvers = {
     },
 
     post: async (parent, { _id }) => {
-      return Post.findOne({ _id })
-        // .populate('comments')
+      return Post.findOne({ _id });
+      // .populate('comments')
     },
     // posts: async () => {
     //   return Post.find()
@@ -75,6 +75,7 @@ const resolvers = {
     },
 
     login: async (parent, { email, password }) => {
+      console.log("heree login");
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -94,13 +95,13 @@ const resolvers = {
     updateUser: async (parent, args, context) => {
       if (context.user) {
         const updateUser = await User.findByIdAndUpdate(
-          context.user._id, args,
-          { new: true, }
-        )
+          context.user._id,
+          args,
+          { new: true }
+        );
       }
-      throw new AuthenticationError('You need to be logged in friend!')
+      throw new AuthenticationError("You need to be logged in friend!");
     },
-
 
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
@@ -115,54 +116,64 @@ const resolvers = {
     },
 
     addPost: async (parent, args, context) => {
-      if (context.user) {
-        const post = await Post.create({
-          ...args,
-          username: context.user.username,
-        });
+      console.log("context", context);
+      console.log("args", args);
 
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { posts: post._id } },
-          { new: true }
-        );
-        return post;
+      try {
+        if (context.user) {
+          console.log("hereeee");
+          const post = await Post.create({
+            ...args,
+            username: context.user.username,
+          });
+
+          await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $push: { posts: post._id } },
+            { new: true }
+          );
+          return post;
+        }
+      } catch (error) {
+        console.log("addPost error", error);
+        throw new AuthenticationError("You need to be logged in friend!");
       }
-      throw new AuthenticationError('You need to be logged in friend!')
     },
 
     editPost: async (parents, args, context) => {
       if (context.user) {
-        const { postId,
+        const {
+          postId,
           title,
           postContent,
           postRepoLink,
-          deployedApplication
-        } = args
-        const updatePost = await Post.findByIdAndUpdate(
-          postId,
-          {
-            title: title,
-            postContent: postContent,
-            postRepoLink: postRepoLink,
-            deployedApplication: deployedApplication
-          }
-        );
-        return updatePost
+          deployedApplication,
+        } = args;
+        const updatePost = await Post.findByIdAndUpdate(postId, {
+          title: title,
+          postContent: postContent,
+          postRepoLink: postRepoLink,
+          deployedApplication: deployedApplication,
+        });
+        return updatePost;
       }
-      throw new AuthenticationError('You need to be logged in friend!')
+      throw new AuthenticationError("You need to be logged in friend!");
     },
 
     addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {
         const updatedPost = await Post.findOneAndUpdate(
           { _id: postId },
-          { $push: { comments: { commentText, username: context.user.username } } },
+          {
+            $push: {
+              comments: { commentText, username: context.user.username },
+            },
+          },
           { new: true }
         );
-        return updatedPost
+        return updatedPost;
       }
-      throw new AuthenticationError('You need to be logged in friend!')
+      throw new AuthenticationError("You need to be logged in friend!");
     },
 
     removeComment: async (parent, { postId, commentId }, context) => {
@@ -171,11 +182,11 @@ const resolvers = {
           { _id: postId },
           { $pull: { comments: { _id: commentId } } },
           { new: true }
-        )
-        return updateComment
+        );
+        return updateComment;
       }
-      throw new AuthenticationError('You need to be logged in friend!')
-    }
+      throw new AuthenticationError("You need to be logged in friend!");
+    },
   },
 };
 
