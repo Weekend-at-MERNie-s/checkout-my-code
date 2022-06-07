@@ -34,3 +34,23 @@ export const ADD_POST = gql`
 // export const ADD_FRIEND = gql`
 //   mutation addFriend($id: ID!)
 // `
+export const ADD_COMMENT = gql`
+mutation addComment($postId: ID!, $commentText: String!) {
+  addComment(postId: $postId, commentText: $commentText) {
+    _id
+    title
+    postContent
+    postRepoLink
+    deployedApplication
+    createdAt
+    username
+    commentCount
+    comments {
+      commentText
+      _id
+      username
+      createdAt
+    }
+  }
+}
+`
