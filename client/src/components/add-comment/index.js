@@ -20,7 +20,7 @@ const CommentForm = ({ postId }) => {
 
         try {
             await addcomment({
-                variables: { commentText, thoughtId }
+                variables: { commentText, postId }
             })
             setBody('');
             setCharacterCount(0);
