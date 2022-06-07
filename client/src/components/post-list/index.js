@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './post-list.css'
+import heart from '../../assets/images/love-code.png'
 
 
 const PostList = ({ posts, title }) => {
@@ -46,6 +47,7 @@ const PostList = ({ posts, title }) => {
               posted on &nbsp; 
                {post.createdAt}
             </p>
+            <img id="dog" style={{ height: "30px"}} src={heart} alt="cute dog with glasses" />
             <Link to={`/post/${post._id}`}>
             <p className="ternary">
                 {/* {post.commentCount} */}

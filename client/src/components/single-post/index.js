@@ -51,10 +51,11 @@ function SinglePost(props) {
           </div>
         </div>
         {post.commentCount > 0 && <Comment comments={post.comments} />}
+        {!Auth.loggedIn()&& <p style={{color:"#774c2a", fontWeight: "bold"}}>Only logged in users can comment, please sign up or login.</p>}
         {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </section>
      <div>
-      {/* <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" /> */}
+      <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
       </div>
     </>
   );
