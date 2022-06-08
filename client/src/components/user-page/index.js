@@ -2,8 +2,10 @@ import React, {useState, useEffect} from "react";
 import css from "./style.css";
 import SinglePost from "../single-post";
 import dog from '../../assets/images/dog-cartoon.png'
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
+import { QUERY_POSTS } from "../../utils/queries";
+import PostList from '../post-list'
 
 function UserPage() {
     const [title, setTitle] = useState('');
@@ -13,6 +15,9 @@ function UserPage() {
 
     const [postList, setPostList]= useState([]);
     const [addPost, {data,loading,error}]=useMutation(ADD_POST);
+    const { loading: loadingPosts, data: postData } = useQuery(QUERY_POSTS);
+    const allPosts = postData?.posts||[];
+    console.log('allPosts',allPosts);
 
     const handleSubmit = async(event)=> {
         event.preventDefault();
@@ -30,7 +35,9 @@ function UserPage() {
         setDeploy('');
         setJustify('');
     }
-   console.log(data,loading,error)
+   console.log('data',data)
+   console.log('loading',loading)
+   console.log('error',error)
 useEffect(() => {
   posts()
 }, [])
@@ -78,18 +85,27 @@ const posts = async ()=>{
       </form>
 
       <div className='postList'>
-        <h1>post list displays below</h1>
-        <ol className='list'>
-          {postList.map((data)=>{
-            return(
-              <li className='list-item' key={data.id}>{data.handleSubmit}</li>
-            )
-          })}
-        </ol>
+      {loadingPosts ? (
+        <div>Loading...</div>
+      ) : (
+        // <h1>post list displays below</h1>
+        // <ol className='list'>
+        //   {allPosts.map((data)=>{
+        //     return(
+        //       <li className='list-item' key={data._id}>{data.title}</li>
+        //     )
+        //   })}
+        // </ol>
+        <PostList posts={allPosts} />
+          )}
       </div>
 
         {/* display list post- need to use .map method (postList) */}
+    
+    
+    
     </section>
+
   );
 }
 export default UserPage;
