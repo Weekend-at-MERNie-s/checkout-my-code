@@ -59,6 +59,7 @@ export const ADD_VOTE = gql`
 mutation addVote($postId: ID!) {
   addVote(postId: $postId) {
     voteCount
+    post_id
   }
 }`
 
@@ -66,5 +67,6 @@ export const ADD_FLAG = gql`
 mutation addFlag($postId: ID!) {
   addFlag(postId: $postId) {
     flagCount
+    post_id
   }
 }`

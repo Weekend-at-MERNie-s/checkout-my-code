@@ -70,7 +70,7 @@ function SinglePost(props) {
         {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </section>
       <div>
-        {/* <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" /> */}
+        <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
       </div>
     </>
   );

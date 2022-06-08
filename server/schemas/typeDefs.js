@@ -35,6 +35,7 @@ const typeDefs = gql`
 
     type Vote {
       _id: ID
+      post_id: ID
       voting: String
     }
       type Flag {
