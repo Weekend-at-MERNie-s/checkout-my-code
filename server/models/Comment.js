@@ -13,11 +13,6 @@ const commentSchema = new Schema({
     type: String,
     // required: true
   },
-  // commentAuthor: {
-  //   type: String,
-  //   // required: true,
-  //   trim: true,
-  // },
   createdAt: {
     type: Date,
     default: Date.now,
