@@ -42,6 +42,8 @@ query Post($id: ID!) {
     deployedApplication
     createdAt
     username
+   voteCount
+   flagCount
     commentCount
     comments {
       commentText
