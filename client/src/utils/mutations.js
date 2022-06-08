@@ -54,3 +54,17 @@ mutation addComment($postId: ID!, $commentText: String!) {
   }
 }
 `
+
+export const ADD_VOTE = gql`
+mutation addVote($postId: ID!) {
+  addVote(postId: $postId) {
+    voteCount
+  }
+}`
+
+export const ADD_FLAG = gql`
+mutation addFlag($postId: ID!) {
+  addFlag(postId: $postId) {
+    flagCount
+  }
+}`

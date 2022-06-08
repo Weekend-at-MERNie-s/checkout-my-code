@@ -32,3 +32,7 @@ font-weight: bold;}
     width: 100%;
     
 }
+
+.icon:hover{
+    transform: scale(1.5); 
+}

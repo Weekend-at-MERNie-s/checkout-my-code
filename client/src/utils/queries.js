@@ -10,6 +10,14 @@ export const QUERY_POSTS = gql`
     postRepoLink
     deployedApplication
     createdAt
+    flags {
+      _id
+    }
+    flagCount
+  voteCount
+  votes{
+    _id
+  }
     commentCount
     comments{
       _id
@@ -24,7 +32,7 @@ export const QUERY_POSTS = gql`
   
 `;
 
-export const QUERY_POST = gql `
+export const QUERY_POST = gql`
 query Post($id: ID!) {
   post(_id: $id) {
     _id

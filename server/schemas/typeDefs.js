@@ -11,6 +11,7 @@ const typeDefs = gql`
         userGithub: String
         friendCount: Int 
         post: [Post]
+        votes: [Vote]
         comments: [Comment]
         friends: [User]
 
@@ -25,8 +26,23 @@ const typeDefs = gql`
         createdAt: String
         username: String 
         commentCount: Int
+        flags:[Flag]
+        flagCount: Int
+        votes: [Vote]
+        voteCount: Int
         comments: [Comment]
     }
+
+    type Vote {
+      _id: ID
+      voting: String
+    }
+      type Flag {
+      _id: ID
+      flagging: String
+    
+    }
+
     type Comment {
         _id: ID
         commentText: String
@@ -61,6 +77,8 @@ const typeDefs = gql`
         addUser(username: String!, userGithub: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addComment(postId: ID!,commentText: String!): Post
+        addVote(postId: ID!): Post
+        addFlag(postId: ID!): Post
         removeComment(commentId: ID!): Post
         addFriend(friendId: ID!): User
         addPost(title: String!, postContent: String!, postRepoLink: String!, deployedApplication: String): Post

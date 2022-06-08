@@ -2,10 +2,15 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
 import css from './post-list.css'
+import { ADD_VOTE } from '../../utils/mutations';
+import heart from '../../assets/images/heart.png'
+import flag from '../../assets/images/red-flag.png'
 
 
 const PostList = ({ posts, title }) => {
+  
   if (!posts.length) {
     return <h3>No posts Yet</h3>;
   }
@@ -38,14 +43,34 @@ const PostList = ({ posts, title }) => {
               
               <p className="mb-0">Repo Link:{post.postRepoLink}
               </p>
-              <p className="mb-0">Deployed at: {post.deployedApplication}
+
+              <p className="mb-0">
+
+              {post.deployedApplication ? 
+             `Deployed at:  `  + post.deployedApplication : ''} 
               </p>
+
+             
 
               <p>
             {post.username}&nbsp;       
               posted on &nbsp; 
                {post.createdAt}
             </p>
+            <img class="icon"style={{ height: "30px"}}
+             src={heart} alt="heart icon fro likes" />&nbsp; &nbsp; 
+             <span >
+               {post.voteCount? post.voteCount : ''} </span>   
+                &nbsp;  &nbsp; 
+         
+             
+           
+             <img class="icon"style={{ height: "30px"}} src={flag} 
+             alt="heart icon fro likes" />
+                  <span >
+               {post.flagCount? post.flagCount : ''} </span>   
+                &nbsp;  &nbsp; 
+
             <Link to={`/post/${post._id}`}>
             <p className="ternary">
                 {/* {post.commentCount} */}
