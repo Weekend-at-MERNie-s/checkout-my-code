@@ -66,8 +66,9 @@ function UserPage() {
       <div className='user-post-page'>
 
 
-        {!Auth.loggedIn() && <p style={{ color: "#774c2a", fontWeight: "bold" }}>You need to be logged in, friend!</p>}
+        
         <div>
+        {!Auth.loggedIn() && <p style={{ color: "#774c2a", fontWeight: "light" }}>You need to be logged in, friend!</p>}
           <form className="post-form" onSubmit={handleSubmit}>
             <h1>Create New Post</h1>
             <div>
