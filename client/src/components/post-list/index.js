@@ -8,6 +8,7 @@ import flag from '../../assets/images/red-flag.png'
 
 
 const PostList = ({ posts, title }) => {
+  
   if (!posts.length) {
     return <h3>No posts Yet</h3>;
   }

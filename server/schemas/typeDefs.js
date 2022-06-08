@@ -9,6 +9,7 @@ const typeDefs = gql`
         username: String
         email: String
         userGithub: String
+        bio: String
         friendCount: Int 
         post: [Post]
         comments: [Comment]
@@ -30,7 +31,6 @@ const typeDefs = gql`
     type Comment {
         _id: ID
         commentText: String
-        commentAuthor: String
         username: String
         createdAt: String
     }
@@ -55,8 +55,8 @@ const typeDefs = gql`
 
 
     type Mutation {
-        updateUser(username: String, userGithub: String, email: String): User
-        addUser(username: String!, userGithub: String!, email: String!, password: String!): Auth
+        updateUser(username: String, userGithub: String, email: String, bio: String): User
+        addUser(username: String!, userGithub: String!, email: String!, password: String!, bio: String): Auth
         login(email: String!, password: String!): Auth
         addComment(postId: ID!,commentText: String!): Post
         removeComment(commentId: ID!): Post
