@@ -20,27 +20,29 @@ function UserPage() {
   const allPosts = postData?.posts || [];
   console.log('allPosts', allPosts);
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('title', title)
-    console.log('github', github)
-    console.log('deploy', deploy)
-    console.log('justify', justify)
 
+  
+try {
     await addPost({
-      variables: { title, postRepoLink: github, deployedApplication: deploy, postContent: justify }
+      variables: { title, postRepoLink: github,
+         deployedApplication: deploy, postContent: justify }
     })
 
     setTitle('');
     setGithub('');
     setDeploy('');
     setJustify('');
+  } catch(e){
+    console.log(e)
   }
-  console.log('data', data)
-  console.log('loading', loading)
-  console.log('error', error)
+
+}
+
   useEffect(() => {
-    posts()
+
   }, [])
   const posts = async () => {
     const response = await fetch('user-page');
