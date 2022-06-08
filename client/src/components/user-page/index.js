@@ -24,22 +24,24 @@ function UserPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-  
-try {
-    await addPost({
-      variables: { title, postRepoLink: github,
-         deployedApplication: deploy, postContent: justify }
-    })
 
-    setTitle('');
-    setGithub('');
-    setDeploy('');
-    setJustify('');
-  } catch(e){
-    console.log(e)
+    try {
+      await addPost({
+        variables: {
+          title, postRepoLink: github,
+          deployedApplication: deploy, postContent: justify
+        }
+      })
+
+      setTitle('');
+      setGithub('');
+      setDeploy('');
+      setJustify('');
+    } catch (e) {
+      console.log(e)
+    }
+
   }
-
-}
 
   useEffect(() => {
 
@@ -63,67 +65,67 @@ try {
 
       <div className='user-post-page'>
 
-      
-            {!Auth.loggedIn() && <p style={{ color: "#774c2a", fontWeight: "bold" }}>You need to be logged in, friend!</p>}
+
+        {!Auth.loggedIn() && <p style={{ color: "#774c2a", fontWeight: "bold" }}>You need to be logged in, friend!</p>}
+        <div>
+          <form className="post-form" onSubmit={handleSubmit}>
+            <h1>Create New Post</h1>
             <div>
-            <form className="post-form" onSubmit={handleSubmit}>
-              <h1>Create New Post</h1>
-              <div>
-                <label htmlFor="post-title">Title:</label>
-                <input className="form-input" type="text" id="post-title" name="post-title" onChange={e => setTitle(e.target.value)} />
-              </div>
-              <div>
-                <label htmlFor="github">GitHub Repo Link:</label>
-                <input className="form-input" id="github" name="github" onChange={e => setGithub(e.target.value)} />
-              </div>
-              <div>
-                <label htmlFor="deploy">Deployed App Link:</label>
-                <input className="form-input" id="appLink" name="appLink" onChange={e => setDeploy(e.target.value)} />
-              </div>
-              <div>
-                <label htmlFor="content">Justify my post:</label>
-                <textarea className="form-input" id="justify" name="justify" onChange={e => setJustify(e.target.value)}></textarea>
-              </div>
-              <div className='merge'>
-                <img id="dog" style={{ height: "85px", width: "85px" }} src={dog} alt="cute dog with glasses" />
-
-                <button type="submit" className='btn'>
-                  Merge my code
-                </button>
-              </div>
-            </form>
+              <label htmlFor="post-title">Title:</label>
+              <input className="form-input" type="text"  value={title}id="post-title" name="post-title" onChange={e => setTitle(e.target.value)} />
             </div>
-
-
-
-
-
-
-          
-            <div id="post">
-              {loadingPosts ? (
-                <div>Loading...</div>
-              ) : (
-                // <h1>post list displays below</h1>
-                // <ol className='list'>
-                //   {allPosts.map((data)=>{
-                //     return(
-                //       <li className='list-item' key={data._id}>{data.title}</li>
-                //     )
-                //   })}
-                // </ol>
-                <PostList posts={allPosts} />
-              )}
-
-
-              {/* display list post- need to use .map method (postList) */}
-
+            <div>
+              <label htmlFor="github">GitHub Repo Link:</label>
+              <input className="form-input" id="github" value={github}name="github" onChange={e => setGithub(e.target.value)} />
             </div>
-          </div>
-        
+            <div>
+              <label htmlFor="deploy">Deployed App Link:</label>
+              <input className="form-input" id="appLink"value={deploy} name="appLink" onChange={e => setDeploy(e.target.value)} />
+            </div>
+            <div>
+              <label htmlFor="content">Justify my post:</label>
+              <textarea className="form-input" id="justify" value={justify}name="justify" onChange={e => setJustify(e.target.value)}></textarea>
+            </div>
+            <div className='merge'>
+              <img id="dog" style={{ height: "85px", width: "85px" }} src={dog} alt="cute dog with glasses" />
 
-        </>
+              <button type="submit" className='btn'>
+                Merge my code
+              </button>
+            </div>
+          </form>
+        </div>
 
-        );
+
+
+
+
+
+
+        <div id="post">
+          {loadingPosts ? (
+            <div>Loading...</div>
+          ) : (
+            // <h1>post list displays below</h1>
+            // <ol className='list'>
+            //   {allPosts.map((data)=>{
+            //     return(
+            //       <li className='list-item' key={data._id}>{data.title}</li>
+            //     )
+            //   })}
+            // </ol>
+            <PostList posts={allPosts} />
+          )}
+
+
+          {/* display list post- need to use .map method (postList) */}
+
+        </div>
+      </div>
+
+
+    </>
+
+  );
 }
-        export default UserPage;
+export default UserPage;

@@ -45,7 +45,7 @@ const PostList = ({ posts, title }) => {
               <p className="mb-0">
 
               {post.deployedApplication ? 
-             `Deployed at` + post.deployedApplication : ''} 
+             `Deployed at:  `  + post.deployedApplication : ''} 
               </p>
 
              
