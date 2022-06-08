@@ -41,8 +41,14 @@ const PostList = ({ posts, title }) => {
               
               <p className="mb-0">Repo Link:{post.postRepoLink}
               </p>
-              <p className="mb-0">Deployed at: {post.deployedApplication}
+
+              <p className="mb-0">
+
+              {post.deployedApplication ? 
+             `Deployed at` + post.deployedApplication : ''} 
               </p>
+
+             
 
               <p>
             {post.username}&nbsp;       
