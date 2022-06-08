@@ -14,7 +14,7 @@ export const QUERY_POSTS = gql`
     comments{
       _id
       username
-      commentAuthor
+     
       commentText
       createdAt
     }
@@ -64,7 +64,7 @@ export const QUERY_ME = gql`
       comments {
         _id
         commentText
-        commentAuthor
+        
         username
         createdAt
       }

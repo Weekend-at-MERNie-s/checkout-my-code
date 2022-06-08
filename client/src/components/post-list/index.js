@@ -6,6 +6,7 @@ import css from './post-list.css'
 
 
 const PostList = ({ posts, title }) => {
+  
   if (!posts.length) {
     return <h3>No posts Yet</h3>;
   }
