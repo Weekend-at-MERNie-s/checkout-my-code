@@ -17,6 +17,7 @@ import UserPage from "./components/user-page";
 import Join from "./components/join";
 import NoMatch from "../../client/src/pages/NoMatch";
 import SinglePost from "./components/single-post";
+import DonatePage from './components/Donate'
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -52,6 +53,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/main" element={<Main />} />
             <Route path="/user-page" element={<UserPage />} />
+            <Route path="/donate" element={<DonatePage />} />
             <Route
                 path="/post/:id"
                 element={<SinglePost />}
