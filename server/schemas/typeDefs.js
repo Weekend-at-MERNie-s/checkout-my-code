@@ -23,7 +23,7 @@ const typeDefs = gql`
         postRepoLink: String
         deployedApplication: String
         createdAt: String
-        username: String 
+        username: String
         commentCount: Int
         comments: [Comment]
     }
@@ -34,8 +34,6 @@ const typeDefs = gql`
         username: String
         createdAt: String
     }
-
-
 
 
     type Auth {

@@ -29,7 +29,7 @@ const userSchema = new Schema({
     unique: true,
     required: 'Enter your Github link'
   },
-  post: [
+  posts: [
     {
     type: Schema.Types.ObjectId,
     ref: 'Post'
@@ -41,6 +41,7 @@ const userSchema = new Schema({
       ref: 'Comment',
     },
   ],
+  
   friends: [
     {
       type: Schema.Types.ObjectId,
