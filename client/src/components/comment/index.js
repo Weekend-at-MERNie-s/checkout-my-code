@@ -1,24 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import css from './style.css'
 
 const Comment = ({ comments }) => {
     return (
-        <div className="card mb-3">
-            <div className="card-header">
-                <span className="text-light">comments</span>
-            </div>
-            <div className="card-body">
-                {comments &&
-                    comments.map(comment => (
-                        <p className="pill mb-3" key={comment._id}>
-                            {comment.commentText} {'// '}
+        <section style={{ margin: "auto", justifyContent: "center" }}
+            id="comments">
+           
+                <div class="row">
+                    <div class="col-md-12">
 
-                            {comment.username} on {comment.createdAt}
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 style= {{color: "#774c2a", textAlign:'center'}} 
+                                class="card-title">Recent Comments</h4>
+                                <h6 style= {{color: "#774c2a", textAlign:'center'}}
+                                class="card-subtitle">Latest Comments by users</h6> </div>
+                            <div class="d-flex flex-row comment-row">
+                            </div>
 
-                        </p>
-                    ))}
+                            {comments &&
+                                comments.map(comment => (
+                                    <p id="comment"
+                                        className="comment-text w-100" key={comment._id}>
+                                             {comment.commentText} {''}< br />
+                                        {comment.username} on {comment.createdAt} 
+                                       
+                                    </p>
+                                ))}
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
     );
 };
 

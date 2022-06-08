@@ -3,6 +3,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './post-list.css'
+import heart from '../../assets/images/love-code.png'
+import flag from '../../assets/images/red-flag.png'
 
 
 const PostList = ({ posts, title }) => {
@@ -47,6 +49,8 @@ const PostList = ({ posts, title }) => {
               posted on &nbsp; 
                {post.createdAt}
             </p>
+            <img class="icon"style={{ height: "30px"}} src={heart} alt="heart icon fro likes" /> &nbsp;  &nbsp;  
+             <img class="icon"style={{ height: "30px"}} src={flag} alt="heart icon fro likes" />
             <Link to={`/post/${post._id}`}>
             <p className="ternary">
                 {/* {post.commentCount} */}

@@ -34,7 +34,7 @@ const userSchema = new Schema({
     minlength: 1,
     maxlength: 280
   },
-  post: [
+  posts: [
     {
     type: Schema.Types.ObjectId,
     ref: 'Post'
@@ -46,6 +46,7 @@ const userSchema = new Schema({
       ref: 'Comment',
     },
   ],
+  
   friends: [
     {
       type: Schema.Types.ObjectId,
