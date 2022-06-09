@@ -1,103 +1,82 @@
 #main-nav {
-    background-color: #774c2a;
-    flex-wrap: nowrap;
-    position: -webkit-sticky;
-    position: sticky;
-    color: white;
-    font-size: 16px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    width: 100%;
+  background-color: #774c2a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  padding: 15px;
 }
-header nav {
-    margin: 7px 0;
+.titleBtnLink {
+  font-size: 35px;
+  color: lightskyblue;
 }
-
 #nav-list {
-    padding:15px;
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
+}
+.navBtnLink {
+  padding: 10px;
+  color: lightskyblue;
+  font-weight: bold;
 }
 
-#title {
-   margin-left: 10px;
-   color:red
+/* STYLING FOR POST TITLE LINKS */
+a {
+  color: lightskyblue;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
 }
-li{
-    padding:10px;
-    text-decoration: none;
-    color:white;
-}
-
-.navBtn {
-color:white;
+/* HOVER EFFECTS FOR ALL LINKS  */
+a:hover {
+  color: lightsalmon;
 }
 
 
-  a{
-      color:white;
-      text-decoration: none;
-  }
-  a:hover {
-    text-decoration: none;
-    color:black;
-  }
-  li:hover {
-    background-color: #f4e4c2;
-    border-radius: 15px;
-    text-shadow: none;
-    color:black;
+@media screen and (max-width: 980px) {
+  #main-nav {
+    position: relative;
+    padding-bottom: 0;
+    justify-content: center;
   }
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 775px) {
     #main-nav {
-       position: relative;
-       padding-bottom: 0;
-       justify-content: center;
-     }
-   
-     @media screen and (max-width: 775px) {
-   
-       #main-nav{
-         display: flex;
-         flex-wrap: wrap;
-         flex-direction: column;
-         width: auto;
-      
-       }
-       #title{
-         font-size: 14px;
-        
-       }
-       h3,h4{
-        font-size: 14px;
-        margin-left: 3px;
-       }
-   
-      li a ul {
-        font-size: 14px;
-      }
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: auto;
+    }
+    #title {
+      font-size: 14px;
+    }
+    h3,
+    h4 {
+      font-size: 14px;
+      margin-left: 3px;
+    }
 
-     }
-   
-     @media screen and (max-width: 575px) {
-     
-       
-       header nav ul li a {
-         justify-content: flex-start;
-         font-size: 20px;
-         top: 0;
-         left: 0;
-         height: 100%;
-         width: 100%;
-         flex-direction: row;
-         font-weight: bold;
-         padding-top: 0px;
-       }
-   
-   
-     }
-   }
+    li a ul {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    header nav ul li a {
+      justify-content: flex-start;
+      font-size: 20px;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      flex-direction: row;
+      font-weight: bold;
+      padding-top: 0px;
+    }
+  }
+}
