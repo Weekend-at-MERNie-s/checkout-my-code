@@ -16,14 +16,14 @@ function UserPage() {
 
   const [postList, setPostList] = useState([]);
   const [addPost, { data, loading, error }] = useMutation(ADD_POST);
-  const { loading: loadingPosts, data: postData } = useQuery(QUERY_POSTS);
+  const { loading: loadingPosts, data: postData,refetch } = useQuery(QUERY_POSTS);
   const allPosts = postData?.posts || [];
   console.log('allPosts', allPosts);
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
 
     try {
       await addPost({
@@ -31,10 +31,10 @@ function UserPage() {
           title, postRepoLink: github,
           deployedApplication: deploy, postContent: justify,
          
-
+         
         }
       })
-
+      refetch()
       setTitle('');
       setGithub('');
       setDeploy('');
