@@ -29,12 +29,21 @@ const userSchema = new Schema({
     unique: true,
     required: 'Enter your Github link friend'
   },
-  bio: {
-    type: String,
-    minlength: 1,
-    maxlength: 280
-  },
-  posts: [
+
+  votes: [
+    {
+    type: Schema.Types.ObjectId,
+    ref: 'Vote'
+    }
+  ],
+
+  flags: [
+    {
+    type: Schema.Types.ObjectId,
+    ref: 'Flag'
+    }
+  ],
+  post: [
     {
     type: Schema.Types.ObjectId,
     ref: 'Post'
@@ -77,6 +86,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 //RETRIEVES NUMBER OF USERS FRIENDS 
+
 userSchema.virtual("friendCount").get(function () {
   return this.friends.length;
 });

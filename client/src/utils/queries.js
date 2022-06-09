@@ -10,6 +10,14 @@ export const QUERY_POSTS = gql`
     postRepoLink
     deployedApplication
     createdAt
+    flags {
+      _id
+    }
+    flagCount
+  voteCount
+  votes{
+    _id
+  }
     commentCount
     comments{
       _id
@@ -33,6 +41,8 @@ query Post($id: ID!) {
     deployedApplication
     createdAt
     username
+   voteCount
+   flagCount
     commentCount
     comments {
       commentText

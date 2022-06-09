@@ -1,74 +1,64 @@
 
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import css from './post-list.css'
-import heart from '../../assets/images/love-code.png'
-import flag from '../../assets/images/red-flag.png'
+import { ADD_VOTE } from '../../utils/mutations';
+import { ADD_FLAG } from '../../utils/mutations';
+import PostListCard from './post-list-card'
+import { QUERY_POSTS } from "../../utils/queries";
+
 
 
 const PostList = ({ posts, title }) => {
-  
-  if (!posts.length) {
-    return <h3>No posts Yet</h3>;
+  const [addvote, { error }] = useMutation(ADD_VOTE)
+  const [addFlag] = useMutation(ADD_FLAG)
+
+  // if (!posts.length) {
+  //   return <h3>No posts Yet</h3>;
+  // }
+  const handleVote = async (postId) => {
+    console.log(postId)
+    try {
+      await addvote({
+        variables: { postId },
+        refetchQueries: [
+
+          { query: QUERY_POSTS }, // DocumentNode object parsed with gql
+
+          'post' // Query name
+
+        ],
+      })
+
+
+    } catch (e) {
+      console.log(e)
+    }
+
   }
 
+  const handleFlag = async (postId) => {
+    console.log(postId)
+    try {
+      await addFlag({
+        variables: { postId }
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
   return (
     <section id="posts">
-    <div>
-      <h3>{title}</h3>
-      {posts &&
-        posts.map(post => (
-       
-          <div key={post._id} className="card mb-3">
-           
-            <p className="card-header" 
-            style={{textAlign: "center", color: "white"}}>
-              <Link to={`/post/${post._id}`}> {post.title}</Link>
-            
-             
-            </p>
-          
-            <div className="card-body">
-           
-              <p className="mb-0">{post.postContent}
-        
-              {/* <p>{post.post.postContent}</p> */}
-              
-                {/* Reactions: {post.reactionCount} || Click to{' '}
-                {post.reactionCount ? 'see' : 'start'} the discussion! */}
-              </p>
-              
-              <p className="mb-0">Repo Link:{post.postRepoLink}
-              </p>
+      <div>
+        <h3>{title}</h3>
+        {posts &&
+          posts.map(post => (
+            < PostListCard post={post} handleVote={handleVote} handleFlag={handleFlag} />
 
-              <p className="mb-0">
 
-              {post.deployedApplication ? 
-             `Deployed at:  `  + post.deployedApplication : ''} 
-              </p>
-
-             
-
-              <p>
-            {post.username}&nbsp;       
-              posted on &nbsp; 
-               {post.createdAt}
-            </p>
-            <img class="icon"style={{ height: "30px"}} src={heart} alt="heart icon fro likes" /> &nbsp;  &nbsp;  
-             <img class="icon"style={{ height: "30px"}} src={flag} alt="heart icon fro likes" />
-            <Link to={`/post/${post._id}`}>
-            <p className="ternary">
-                {/* {post.commentCount} */}
-                {post.commentCount ? 'See comment(s)' : 'Make a comment'} 
-              </p>
-              </Link>
-              
-            </div>
-          </div>
-         
-        ))}
-    </div>
+          ))}
+      </div>
     </section>
   );
 };
