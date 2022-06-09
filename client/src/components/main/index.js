@@ -23,7 +23,8 @@ function Main() {
         <>
           <h3 style={{textAlign: "center", paddingTop:"10px", color: "#774c2a"}}>Check this out  <img id="glass" src={glass} /></h3> 
          
-        <PostList posts={posts} />
+        {/* <PostList posts={posts} /> */}
+        <PostList posts={posts} postId={posts._id} />
       
     
       </>

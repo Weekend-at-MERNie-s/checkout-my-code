@@ -35,15 +35,9 @@
 
 
     width: 100%;
-
+    
 }
 
-.icons{
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-}
-
-.icon:hover {
+.icon:hover{
     transform: scale(1.5); 
 }

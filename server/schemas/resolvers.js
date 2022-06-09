@@ -165,6 +165,28 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in friend!')
     },
+    addVote: async (parent, { postId, voting }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { votes: { voting, username: context.user.username } } },
+          { new: true }
+        );
+        return updatedPost
+      }
+      throw new AuthenticationError('You need to be logged in friend!')
+    },
+    addFlag: async (parent, { postId, flagging }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { flags: { flagging, username: context.user.username } } },
+          { new: true }
+        );
+        return updatedPost
+      }
+      throw new AuthenticationError('You need to be logged in friend!')
+    },
 
     removeComment: async (parent, { postId, commentId }, context) => {
       if (context.user) {
