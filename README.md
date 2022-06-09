@@ -2,11 +2,13 @@
 ## <p align="center">**A social networking app where users can upload and rate code files to help others improve projects and build up their coding confidence.**</p><br>
 ### <p align="center">Created by Weekend at MERNie's ©2022<p>
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+## Licensing
 
+[![license](https://img.shields.io/badge/license-MIT-success)](https://opensource.org/licenses/MIT)
 ## <p align="center">**TABLE OF CONTENTS**</p>
 ***
 1. **[Contributers](#contributers)**
-2. **[Challenges/Successes](#challenges/successes)**
+2. **[Challenges & Successes](#challengessuccesses)**
 3. **[Deployment](#deployment)**
 4. **[Usage](#usage)** 
 
@@ -31,7 +33,7 @@
     **[GitHub](http://www.github.com/dogmom3)**<br>
 
 - ## **Geiciane Barham**<br>
-    Front and back end debugging, routing, models and UI styling<br>
+    Front end UI,routing,queries,mutations, back end models,endpoints,Front and back end debugging<br>
     **[Email](Geicianecosta43@gmail.com)**<br>
     **[GitHub](https://github.com/geicibarham)**<br>
 
@@ -80,7 +82,7 @@
 ![App Image](./client/src/assets/images/join.png)
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### <p align="center">_Here is the main page referred to as 'Checkout Code', where you can see a list of all users posts. Once logged in, you will be able to leave comments to help out other developers, like posts with really imrpessive code, or flag posts that maybe have some errors in their files to correct._</p>
+### <p align="center">_Here is the main page referred to as 'Checkout Code', where you can see a list of all users posts. Once logged in, you will be able to leave comments to help out other developers, like posts with really impressive code, or flag posts that maybe have some errors in their files to correct._</p>
 ![App Image](./client/src/assets/images/main-page.png)
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
