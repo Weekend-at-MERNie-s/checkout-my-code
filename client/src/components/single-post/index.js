@@ -8,6 +8,8 @@ import Comment from "../comment";
 import CommentForm from "../add-comment";
 import Auth from '../../utils/auth'
 import dog from '../../assets/images/dog-cartoon.png'
+import heart from '../../assets/images/heart.png'
+import flag from '../../assets/images/red-flag.png'
 
 function SinglePost(props) {
   const { id: postId } = useParams();
@@ -46,15 +48,31 @@ function SinglePost(props) {
                 {post.createdAt}
               </p>
 
+              <img class="icon" style={{ height: "30px" }}
+                src={heart} alt="heart icon fro likes" />&nbsp; &nbsp;
+              <span >
+                {post.voteCount ? post.voteCount : ''} </span>
+              &nbsp;  &nbsp;
+
+
+
+              <img class="icon" style={{ height: "30px" }} src={flag}
+                alt="heart icon fro likes" />
+              <span >
+                {post.flagCount ? post.flagCount : ''} </span>
+              &nbsp;  &nbsp;
+
 
             </div>
           </div>
         </div>
         {post.commentCount > 0 && <Comment comments={post.comments} />}
-
+        {!Auth.loggedIn()&& <p style={{color:"#774c2a", fontWeight: "bold"}}>Only logged in users can comment, please sign up or login.</p>}
+        {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </section>
-      {Auth.loggedIn() && <CommentForm postId={post._id} />}
-      <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
+      <div>
+        <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
+      </div>
     </>
   );
 }

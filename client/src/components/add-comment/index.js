@@ -16,6 +16,7 @@ const CommentForm = ({ postId }) => {
     }
 
     const handleFormSubmit = async event => {
+      
         event.preventDefault();
 
         try {
@@ -31,21 +32,19 @@ const CommentForm = ({ postId }) => {
     };
     return (
         <div>
-            <p className={`m-0 ${characterCount === 280 ? 'text-error' : ''}`}>
-                Character Count: {characterCount}/280
-            </p>
-            <form
+         
+            <form class="col-md-12"
                 className="flex-row justify-center justify-space-between-md align-stretch"
                 onSubmit={handleFormSubmit}
             >
-                <textarea
-                    placeholder="Leave a comment to this thought..."
+                <textarea id="addForm"
+                    placeholder="Help somebody out..."
                     value={commentText}
-                    className="form-input col-12 col-md-9"
+                    className="form-input"
                     onChange={handleChange}
                 ></textarea>
 
-                <button className="btn col-12 col-md-3" type="submit">
+                <button style={{ float: "left" }} className="btn col-md-2" type="submit">
                     Submit
                 </button>
             </form>
