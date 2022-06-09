@@ -29,14 +29,6 @@ const userSchema = new Schema({
     unique: true,
     required: 'Enter your Github link friend'
   },
-<<<<<<< HEAD
-  bio: {
-    type: String,
-    minlength: 1,
-    maxlength: 280
-  },
-  posts: [
-=======
 
   votes: [
     {
@@ -52,7 +44,6 @@ const userSchema = new Schema({
     }
   ],
   post: [
->>>>>>> geici-branch
     {
     type: Schema.Types.ObjectId,
     ref: 'Post'

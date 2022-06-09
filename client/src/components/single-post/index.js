@@ -70,13 +70,8 @@ function SinglePost(props) {
         {!Auth.loggedIn()&& <p style={{color:"#774c2a", fontWeight: "bold"}}>Only logged in users can comment, please sign up or login.</p>}
         {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </section>
-<<<<<<< HEAD
-     <div>
-      <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
-=======
       <div>
         <img id="dog" style={{ height: "200px", width: "200px", float: "right" }} src={dog} alt="cute dog with glasses" />
->>>>>>> geici-branch
       </div>
     </>
   );
