@@ -34,11 +34,6 @@ const postSchema = new Schema({
       required: true
     }
   },
-<<<<<<< HEAD
-  comments: [{
-    commentText: {
-      type: String,
-=======
   votes: [{
     post_ID: {
       type: String,
@@ -55,15 +50,10 @@ const postSchema = new Schema({
   comments: [{
     commentText: {
       type: String,
->>>>>>> geici-branch
       required: true,
       minlength: 1,
       maxlength: 280,
     },
-<<<<<<< HEAD
-
-=======
->>>>>>> geici-branch
     username: {
       type: String,
       required: true,
@@ -73,12 +63,6 @@ const postSchema = new Schema({
       type: Date,
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
-<<<<<<< HEAD
-    },
-  },
-  ],
-  comments: [Comment.schema]
-=======
     },
   },
   ],
@@ -100,7 +84,6 @@ const postSchema = new Schema({
   },
   ],
   flags: [Flag.schema]
->>>>>>> geici-branch
 },
 
   {
@@ -109,17 +92,12 @@ const postSchema = new Schema({
     }
   }
 );
-<<<<<<< HEAD
-
-
-=======
 postSchema.virtual('voteCount').get(function () {
   return this.votes.length;
 });
 postSchema.virtual('flagCount').get(function () {
   return this.flags.length;
 });
->>>>>>> geici-branch
 postSchema.virtual('commentCount').get(function () {
   return this.comments.length;
 });
