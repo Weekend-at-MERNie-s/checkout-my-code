@@ -4,7 +4,7 @@
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## <p align="center">**TABLE OF CONTENTS**</p>
-
+***
 1. **[Contributers](#contributers)**
 2. **[Challenges/Successes](#challenges/successes)**
 3. **[Deployment](#deployment)**
@@ -14,7 +14,7 @@
 
 
 ## <p align="center">**CONTRIBUTERS**</p>
-
+***
 - ## **Abi Ponce**<br>
     Back end routing and debugging<br>
     **[Email](abiponce.ap@gmail.com)**<br>
@@ -48,6 +48,7 @@
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## <p align="center">**CHALLENGES & SUCCESSES**</p>
+***
 ### Challenges:
 * Consistancy in the names of endpoints for the front and back end.
 * Learning more about working with back end functionality for those of us that weren't as comfortable in that area.
@@ -64,6 +65,7 @@
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## <p align="center">**DEPLOYMENT**</p>
+***
 ### <p align="center">You can find our app deployed **[here on Heroku](secure-inlet-72014.herokuapp.com/)**</p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
