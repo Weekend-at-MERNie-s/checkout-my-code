@@ -1,10 +1,10 @@
+[![license](https://img.shields.io/badge/license-MIT-success)](https://opensource.org/licenses/MIT)
+
 # <p align="center">**CODESPECT**![App Image](./client/src/assets/images/small-dog.png) </p>
 ## <p align="center">**A social networking app where users can upload and rate code files to help others improve projects and build up their coding confidence.**</p><br>
 ### <p align="center">Created by Weekend at MERNie's ©2022<p>
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-## Licensing
 
-[![license](https://img.shields.io/badge/license-MIT-success)](https://opensource.org/licenses/MIT)
 ## <p align="center">**TABLE OF CONTENTS**</p>
 ***
 1. **[Contributers](#contributers)**
@@ -33,7 +33,7 @@
     **[GitHub](http://www.github.com/dogmom3)**<br>
 
 - ## **Geiciane Barham**<br>
-    Front end UI,routing,queries,mutations, back end models,endpoints,Front and back end debugging<br>
+    Front end UI, routing, queries, mutations, back end models, endpoints, front and back end debugging<br>
     **[Email](Geicianecosta43@gmail.com)**<br>
     **[GitHub](https://github.com/geicibarham)**<br>
 
@@ -67,7 +67,7 @@
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## <p align="center">**DEPLOYMENT**</p>
-***
+
 ### <p align="center">You can find our app deployed **[here on Heroku](secure-inlet-72014.herokuapp.com/)**</p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
