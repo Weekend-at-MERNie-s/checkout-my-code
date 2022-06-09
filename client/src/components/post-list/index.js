@@ -1,18 +1,19 @@
 
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import css from './post-list.css'
 import { ADD_VOTE } from '../../utils/mutations';
 import { ADD_FLAG } from '../../utils/mutations';
-import heart from '../../assets/images/heart.png'
-import flag from '../../assets/images/red-flag.png'
+import PostListCard from './post-list-card'
+import { QUERY_POSTS } from "../../utils/queries";
 
 
-const PostList = ({posts, title }) => {
+
+const PostList = ({ posts, title }) => {
   const [addvote, { error }] = useMutation(ADD_VOTE)
   const [addFlag] = useMutation(ADD_FLAG)
+
   // if (!posts.length) {
   //   return <h3>No posts Yet</h3>;
   // }
@@ -20,11 +21,21 @@ const PostList = ({posts, title }) => {
     console.log(postId)
     try {
       await addvote({
-        variables: { postId }
+        variables: { postId },
+        refetchQueries: [
+
+          { query: QUERY_POSTS }, // DocumentNode object parsed with gql
+
+          'post' // Query name
+
+        ],
       })
+
+
     } catch (e) {
       console.log(e)
     }
+
   }
 
   const handleFlag = async (postId) => {
@@ -43,62 +54,8 @@ const PostList = ({posts, title }) => {
         <h3>{title}</h3>
         {posts &&
           posts.map(post => (
+            < PostListCard post={post} handleVote={handleVote} handleFlag={handleFlag} />
 
-            <div key={post._id} className="card mb-3">
-
-              <p className="card-header"
-                style={{ textAlign: "center", color: "white" }}>
-                <Link to={`/post/${post._id}`}> {post.title}</Link>
-
-
-              </p>
-
-              <div className="card-body">
-
-                <p className="mb-0">{post.postContent}
-
-
-                </p>
-
-                <p className="mb-0">Repo Link:{post.postRepoLink}
-                </p>
-
-                <p className="mb-0">
-
-                  {post.deployedApplication ?
-                    `Deployed at:  ` + post.deployedApplication : ''}
-                </p>
-
-
-
-                <p>
-                  {post.username}&nbsp;
-                  posted on &nbsp;
-                  {post.createdAt}
-                </p>
-                <img onClick={() => handleVote(post._id)} class="icon" style={{ height: "30px" }}
-                  src={heart} alt="heart icon fro likes" />&nbsp; &nbsp;
-                <span >
-                  {post.voteCount ? post.voteCount : ''} </span>
-                &nbsp;  &nbsp;
-
-
-
-                <img onClick={() => handleFlag(post._id)}  class="icon" style={{ height: "30px" }} src={flag}
-                  alt="heart icon fro likes" />
-                <span >
-                  {post.flagCount ? post.flagCount : ''} </span>
-                &nbsp;  &nbsp;
-
-                <Link to={`/post/${post._id}`}>
-                  <p className="ternary">
-                    {/* {post.commentCount} */}
-                    {post.commentCount ? 'See comment(s)' : 'Make a comment'}
-                  </p>
-                </Link>
-
-              </div>
-            </div>
 
           ))}
       </div>
