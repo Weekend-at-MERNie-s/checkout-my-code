@@ -67,6 +67,11 @@ const typeDefs = gql`
           posts(username: String): [Post]
           post(_id: ID!): Post
           comments: [Comment]
+          commentCount: Int
+          votes: [Vote]
+          voteCount: Int
+          flags: [Flag]
+          flagCount: Int
           comment(_id: ID!): Comment
       }
       

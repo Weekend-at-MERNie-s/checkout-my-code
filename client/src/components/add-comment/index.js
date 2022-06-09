@@ -16,6 +16,7 @@ const CommentForm = ({ postId }) => {
     }
 
     const handleFormSubmit = async event => {
+      
         event.preventDefault();
 
         try {

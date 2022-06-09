@@ -5,22 +5,34 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import css from './post-list.css'
 import { ADD_VOTE } from '../../utils/mutations';
+import { ADD_FLAG } from '../../utils/mutations';
 import heart from '../../assets/images/heart.png'
 import flag from '../../assets/images/red-flag.png'
 
 
 const PostList = ({posts, title }) => {
   const [addvote, { error }] = useMutation(ADD_VOTE)
+  const [addFlag] = useMutation(ADD_FLAG)
   // if (!posts.length) {
   //   return <h3>No posts Yet</h3>;
   // }
   const handleVote = async (postId) => {
+    console.log(postId)
     try {
       await addvote({
         variables: { postId }
       })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
-
+  const handleFlag = async (postId) => {
+    console.log(postId)
+    try {
+      await addFlag({
+        variables: { postId }
+      })
     } catch (e) {
       console.log(e)
     }
@@ -72,7 +84,7 @@ const PostList = ({posts, title }) => {
 
 
 
-                <img class="icon" style={{ height: "30px" }} src={flag}
+                <img onClick={() => handleFlag(post._id)}  class="icon" style={{ height: "30px" }} src={flag}
                   alt="heart icon fro likes" />
                 <span >
                   {post.flagCount ? post.flagCount : ''} </span>
