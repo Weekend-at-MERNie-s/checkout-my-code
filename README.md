@@ -1,6 +1,6 @@
-# <p align="center">**CODESPECT**</p>
+# <p align="center">**CODESPECT**![App Image](./client/src/assets/images/small-dog.png) </p>
 ## <p align="center">**A social networking app where users can upload and rate code files to help others improve projects and build up their coding confidence.**</p><br>
-### <p align="center">Created by Weekend at MERNie's 2022<p>
+### <p align="center">Created by Weekend at MERNie's ©2022<p>
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## <p align="center">**TABLE OF CONTENTS**</p>
@@ -41,9 +41,9 @@
     **[GitHub](http://www.github.com/jhessler11)**<br>
 
 - ## **Mark Healy**<br>
-    Heroku deployment and Scrum master
-    **[Email](gmarkghealy@gmail.com)** <br>
-    **[GitHub](http://www.github.com/utilrr)** <br>
+    Heroku deployment and Scrum master<br>
+    **[Email](gmarkghealy@gmail.com)**<br>
+    **[GitHub](http://www.github.com/utilrr)**<br>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
