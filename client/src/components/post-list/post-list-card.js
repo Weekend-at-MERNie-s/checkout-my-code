@@ -21,8 +21,8 @@ const PostCard = ({ post, handleFlag, handleVote }) => {
                 <p className="mb-0">{post.postContent}
                 </p>
 
-                <p className="mb-0">Repo Link:{post.postRepoLink}
-                </p>
+                <a style={{color:"black"}}className="mb-0" href={post.postRepoLink}>Repo Link:{post.postRepoLink}
+                </a>
 
                 <p className="mb-0">
 
