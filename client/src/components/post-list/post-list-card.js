@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import heart from '../../assets/images/heart.png'
 import flag from '../../assets/images/red-flag.png'
+import Auth from '../../utils/auth'
 
 const PostCard = ({ post, handleFlag, handleVote }) => {
     // let [voteCount, setVoteCount] = useState(post.voteCount)
@@ -42,6 +43,7 @@ const PostCard = ({ post, handleFlag, handleVote }) => {
                 }} class="icon" style={{ height: "30px" }}
                     src={heart} alt="heart icon fro likes" />&nbsp; &nbsp;
                 <span >
+             
 
                     {post.voteCount ? post.voteCount : ''} </span>
                 &nbsp;  &nbsp;
@@ -52,7 +54,10 @@ const PostCard = ({ post, handleFlag, handleVote }) => {
                     alt="heart icon fro likes" />
                 <span >
                     {post.flagCount ? post.flagCount : ''} </span>
-                &nbsp;  &nbsp;
+                &nbsp;  &nbsp; < br/>
+                < br/>
+              {!Auth.loggedIn() && <p style={{fontWeight:'lighter', 
+              fontSize:'12px', color: '#774c2a'}}>Only logged in users can like/flag a post</p>}
 
                 <Link to={`/post/${post._id}`}>
                     <p className="ternary">
