@@ -76,22 +76,27 @@ function UserPage() {
             <h1>Create New Post</h1>
             <div>
               <label htmlFor="post-title">Title:</label>
-              <input className="form-input" type="text"  value={title}id="post-title" name="post-title"
+              <input className="form-input"  placeholder=" Please enter the name of your project"
+               type="text"  value={title}id="post-title" name="post-title"
                onChange={e => setTitle(e.target.value)} />
             </div>
             <div>
               <label htmlFor="github">GitHub Repo Link:</label>
-              <input className="form-input" id="github" value={github}name="github"
+              <input className="form-input" placeholder=" Please enter the link for your repo"
+              id="github" value={github}name="github"
                onChange={e => setGithub(e.target.value)} />
             </div>
             <div>
               <label htmlFor="deploy">Deployed App Link:</label>
-              <input className="form-input" id="appLink"value={deploy} name="appLink" 
+              <input className="form-input" placeholder="Please enter the link for deployed app"
+               id="appLink"value={deploy} name="appLink" 
               onChange={e => setDeploy(e.target.value)} />
             </div>
             <div>
               <label htmlFor="content">Justify my post:</label>
-              <textarea className="form-input" id="justify" value={justify}name="justify" 
+              <textarea className="form-input" id="justify" 
+               placeholder="What else would you like to share about your project?"
+              value={justify}name="justify" 
               onChange={e => setJustify(e.target.value)}></textarea>
             </div>
             <div className='merge'>
