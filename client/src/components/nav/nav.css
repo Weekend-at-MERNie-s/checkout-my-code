@@ -13,7 +13,7 @@
 }
 .titleBtnLink {
   font-size: 35px;
-  color: lightskyblue;
+  color:goldenrod;
 }
 #nav-list {
   list-style: none;
@@ -21,20 +21,20 @@
 }
 .navBtnLink {
   padding: 10px;
-  color: lightskyblue;
+  color: goldenrod;
   font-weight: bold;
 }
 
 /* STYLING FOR POST TITLE LINKS */
 a {
-  color: lightskyblue;
-  font-size: 20px;
+  color: goldenrod;
+  font-size: 18px;
   font-weight: bold;
   text-transform: capitalize;
 }
 /* HOVER EFFECTS FOR ALL LINKS  */
 a:hover {
-  color: lightsalmon;
+  color: tan;
 }
 
 

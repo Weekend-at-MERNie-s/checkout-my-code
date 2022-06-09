@@ -38,7 +38,7 @@ function SinglePost(props) {
             <div className="card-body">
 
               <p className="mb-0">{post.postContent} /</p>
-              <p className="mb-0">Repo Link:{post.postRepoLink}
+              <p className="repoLink">Repo Link:{post.postRepoLink}
               </p>
               <p className="mb-0">Deployed at: {post.deployedApplication}
               </p>

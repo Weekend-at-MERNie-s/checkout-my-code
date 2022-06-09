@@ -1,20 +1,32 @@
 #posts {
     padding-top: 20px;
-
     margin: auto;
     width: 50%;
-
+}
+.postCategory{
+    font-size:  20px;
+    font-weight: bold;
+    color:navy;
+}
+.appLink{
+    color:darkcyan;
+    text-decoration: underline;
+}
+.justifyPost{
+    color: darkcyan;
+    font-size: 18px;
+}
+.userInfo{
+    color: darkcyan;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.card-body {
-    z-index: 1;
-    background-color: rgb(244 228 194 / 49%) !important;
-    border: solid 1px white;
+.mb-3{
+    margin:10px;
 }
-
 .ternary {
-    padding-top: 10px;
-    color: #774c2a !important;
+    color: #774c2a;
     font-weight: bold;
 }
 
@@ -32,10 +44,7 @@
 }
 
 #addForm {
-
-
     width: 100%;
-    
 }
 
 .icon:hover{

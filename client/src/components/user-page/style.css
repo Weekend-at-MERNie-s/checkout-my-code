@@ -1,25 +1,23 @@
 h1 {
   font-size: 30px;
-  color:#774c2a;
+  color: navy;
   text-align: center;
   font-weight: bold;
 }
-
-
+label {
+  color: darkcyan;
+  font-weight: bold;
+  font-size: 20px;
+}
 .user-post-page {
   display: flex;
-
   flex-wrap: nowrap;
   justify-content: space-evenly;
-  /* justify-content: flex-start;
-  align-items: flex-start; */
   margin-left: 10px;
-  /* justify-content: left;
-  align-items: center; */
 }
 .post-form {
- margin-left: 10px;
- width: 70vh;
+  margin-left: 10px;
+  width: 60vh;
   border: 3px solid var(--secondary-color);
   background-color: rgba(255, 255, 255, 0.4);
   padding: 20px;
@@ -34,7 +32,6 @@ h1 {
   border: 1px solid var(--secondary-color);
   border-radius: 10px;
   display: block;
-  /* padding: 7px 15px; */
   font-size: 16px;
   /* width: 100%; */
   margin-bottom: 15px;
@@ -48,22 +45,24 @@ h1 {
   float: right;
   margin: auto;
   padding: 10px;
+  background-color:#774c2a;
+  color: goldenrod;
+  font-weight: bold;
 }
-.btn:hover{
-    background-color: #774c2a;
-    color:white;
+.btn:hover {
+  color: tan;
 }
-.merge{
+.merge {
   display: flex;
   flex-direction: row;
 }
 
-#post{
+#post {
   width: 80%;
 }
 
-::placeholder {
+/* ::placeholder {
   color: #774c2a;
- font-weight: lighter;
- font-size: smaller;
-}
+  font-weight: lighter;
+  font-size: smaller;
+} */
