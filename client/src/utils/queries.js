@@ -54,12 +54,11 @@ query Post($id: ID!) {
 
 export const QUERY_ME = gql`
   {
-  me {
+    me {
     _id
     username
     email
     userGithub
-    bio
     friendCount
     post {
       _id
@@ -70,17 +69,24 @@ export const QUERY_ME = gql`
       createdAt
       username
       commentCount
+      flags {
+        _id
+        flagging
+      }
+      flagCount
+      votes {
+        _id
+        post_id
+        voting
+      }
+      voteCount
       comments {
         _id
         commentText
+        commentAuthor
         username
         createdAt
       }
     }
-    friends {
-      _id
-      username
-    }
   }
-}
-`
+}`

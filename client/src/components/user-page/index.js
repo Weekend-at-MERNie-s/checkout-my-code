@@ -29,7 +29,9 @@ function UserPage() {
       await addPost({
         variables: {
           title, postRepoLink: github,
-          deployedApplication: deploy, postContent: justify
+          deployedApplication: deploy, postContent: justify,
+         
+
         }
       })
 
@@ -49,6 +51,7 @@ function UserPage() {
   const posts = async () => {
     const response = await fetch('user-page');
     setPostList(await response.json())
+    
   }
 
   // useEffect(() => {
@@ -73,19 +76,23 @@ function UserPage() {
             <h1>Create New Post</h1>
             <div>
               <label htmlFor="post-title">Title:</label>
-              <input className="form-input" type="text"  value={title}id="post-title" name="post-title" onChange={e => setTitle(e.target.value)} />
+              <input className="form-input" type="text"  value={title}id="post-title" name="post-title"
+               onChange={e => setTitle(e.target.value)} />
             </div>
             <div>
               <label htmlFor="github">GitHub Repo Link:</label>
-              <input className="form-input" id="github" value={github}name="github" onChange={e => setGithub(e.target.value)} />
+              <input className="form-input" id="github" value={github}name="github"
+               onChange={e => setGithub(e.target.value)} />
             </div>
             <div>
               <label htmlFor="deploy">Deployed App Link:</label>
-              <input className="form-input" id="appLink"value={deploy} name="appLink" onChange={e => setDeploy(e.target.value)} />
+              <input className="form-input" id="appLink"value={deploy} name="appLink" 
+              onChange={e => setDeploy(e.target.value)} />
             </div>
             <div>
               <label htmlFor="content">Justify my post:</label>
-              <textarea className="form-input" id="justify" value={justify}name="justify" onChange={e => setJustify(e.target.value)}></textarea>
+              <textarea className="form-input" id="justify" value={justify}name="justify" 
+              onChange={e => setJustify(e.target.value)}></textarea>
             </div>
             <div className='merge'>
               <img id="dog" style={{ height: "85px", width: "85px" }} src={dog} alt="cute dog with glasses" />
@@ -96,12 +103,6 @@ function UserPage() {
             </div>
           </form>
         </div>
-
-
-
-
-
-
 
         <div id="post">
           {loadingPosts ? (

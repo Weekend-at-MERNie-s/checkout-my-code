@@ -42,7 +42,14 @@ const PostList = ({ posts, title }) => {
     console.log(postId)
     try {
       await addFlag({
-        variables: { postId }
+        variables: { postId },
+        refetchQueries: [
+
+          { query: QUERY_POSTS }, // DocumentNode object parsed with gql
+
+          'post' // Query name
+
+        ],
       })
     } catch (e) {
       console.log(e)
