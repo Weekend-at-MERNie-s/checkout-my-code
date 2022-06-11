@@ -83,7 +83,6 @@ export const QUERY_ME = gql`
       comments {
         _id
         commentText
-        commentAuthor
         username
         createdAt
       }

@@ -43,7 +43,7 @@ const userSchema = new Schema({
     ref: 'Flag'
     }
   ],
-  post: [
+  posts: [
     {
     type: Schema.Types.ObjectId,
     ref: 'Post'
